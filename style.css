@@ -1,0 +1,1366 @@
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+html,body{
+  overflow-x: hidden;
+}
+body {
+  background: radial-gradient(
+      circle at 50% 0%,
+      #1a2a6b 0%,
+      #0b1026 35%,
+      #050510 100%
+    );
+  background-attachment: fixed;
+  font-family: "Lato", sans-serif;
+  color: white;
+}
+
+.hero-section{
+    position: relative;
+    height: 720px;
+    width: 100%;
+}
+.bg-img{
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.gradient{
+  position: absolute;
+  width: 100%;
+  height: 100%;
+}
+
+.witcher-logo {
+  position: absolute;
+  left: 5%;
+  top: 100px;
+  width: 150px;
+
+}
+nav{
+    position: relative;
+    z-index: 10;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-left: 100px;
+    padding-right: 100px;
+}
+.hamburger {
+  display: none;
+  background: none;
+  border: none;
+  color: #fff;
+  font-size: 24px;
+  cursor: pointer;
+}
+.close-btn{
+  display: none;
+}
+.light-logo{
+    height: 85px;
+    width: 85px;
+}
+nav ul{
+    margin-right: 200px;
+    display: flex;
+    gap: 25px;
+    align-items: center;
+    font-size: 16px;
+}
+nav ul li{
+    list-style: none;
+}
+nav ul li a{
+    text-decoration: none;
+    color:  white;   
+}
+nav ul li a:hover{
+    text-decoration: underline blue;
+    transition: 0.5s;  
+}
+.hero-logos{
+    display: flex;
+    gap: 20px;
+}
+.hero-logos img{
+    height: 24px;
+    width: 24px;
+}
+.hero-content{
+  position: absolute;
+  left: 60px;
+  top: 400px;
+  width: 550px;
+  z-index: 3;
+}
+
+.hero-content h2 {
+  font-size: 38px;
+  font-weight: 700;
+  margin-bottom: 12px;
+}
+.hero-content p{
+  font-size: 14px;
+  margin-bottom: 10px;
+}
+.hero-content-button{
+  display: flex;
+  gap: 10px;
+}
+.btn-watch{
+  background: #228EE5;
+  margin-top: 10px;
+  color: white;
+  border: none;
+  padding: 10px 18px;
+  border-radius: 26px;
+  font-size: 14px;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 5px;
+}
+.btn-watch:hover{
+  background: transparent;
+  border: 1px solid #228EE5;
+}
+
+.btn-info{
+  margin-top: 10px;
+  background: transparent;
+  color: white;
+  border: 1px solid #228EE5;
+  padding: 10px 18px;
+  border-radius: 26px;
+  font-size: 14px;
+  cursor: pointer;
+  display: flex;
+  gap: 5px;
+}
+.btn-info:hover{
+  background: #228EE5;
+  border: transparent;
+}
+.films-poster{
+  position: absolute;
+  right: 60px;
+  bottom: 40px;
+  width: 550px;
+  height: 174px;
+  z-index: 3;
+}
+
+/* Trends Section */
+.trends {
+  background: #0a0a14;
+  color: #fff;
+  padding: 40px 60px;
+}
+
+.trends-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.trends-top h2 {
+  font-size: 28px;
+  margin: 0;
+}
+
+.trends-top a {
+  color: #4da3ff;
+  text-decoration: none;
+  font-size: 14px;
+}
+
+.trends-grid {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  gap: 16px;
+}
+
+.trend-card {
+  position: relative;
+  border-radius: 12px;
+  overflow: hidden;
+  aspect-ratio: 2 / 3;
+  background: #1a1a26;
+  cursor: pointer;
+}
+
+.trend-card img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.trend-card button {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  border: none;
+  background: rgba(0,0,0,0.6);
+  color: #fff;
+  font-size: 18px;
+  cursor: pointer;
+}
+
+/* Movies Section */
+.movies {
+  background: #0a0a14;
+  color: #fff;
+  padding: 40px 60px;
+}
+
+.movies-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.movies-top h2 {
+  font-size: 28px;
+  margin: 0;
+}
+
+.movies-top a {
+  color: #4da3ff;
+  text-decoration: none;
+  font-size: 14px;
+}
+
+.movies-filters {
+  display: flex;
+  align-items: center;
+  gap: 27px;
+  margin-bottom: 20px;
+  overflow-x: auto;
+}
+
+.genre {
+  padding: 6px 16px;
+  border-radius: 20px;
+  border: none;
+  background: #1c1c28;
+  color: #fff;
+  white-space: nowrap;
+  cursor: pointer;
+}
+.genre:hover{
+  background: #EC5BAA;
+  color: #fff;
+}
+.arrow {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  border: none;
+  background: #1c1c28;
+  color: #fff;
+  font-size: 20px;
+  cursor: pointer;
+  flex-shrink: 0;
+}
+
+.movies-grid {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  gap: 16px;
+}
+
+.movie-card {
+  position: relative;
+  border-radius: 12px;
+  overflow: hidden;
+  aspect-ratio: 2 / 3;
+  background: #1a1a26;
+  cursor: pointer;
+}
+
+.movie-card img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.movie-card button {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  border: none;
+  background: rgba(0,0,0,0.6);
+  color: #fff;
+  font-size: 18px;
+  cursor: pointer;
+}
+
+/* Golden-globe */
+.golden-globe {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  overflow: hidden;
+  padding: 50px 60px 90px 60px;
+  gap: 20px;
+  background: #0a0a14;
+  box-sizing: border-box;
+}
+
+.golden-bg-blur {
+  position: absolute;
+  inset: 12px 0;
+  background: #DAA521;
+  filter: blur(6px);
+  opacity: 0.95;
+  z-index: 0;
+}
+
+.golden-left, .golden-right {
+  position: relative;
+  z-index: 2;
+}
+
+.golden-left {
+  display: flex;
+  flex: 1;
+}
+
+.globe-icon {
+  width: 100%;
+  max-width: 500px;
+  height: auto;
+  display: block;
+}
+
+.left-blur {
+  position: absolute;
+  left: -20px;
+  top: 0;
+  bottom: 0;
+  width: 180px;
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  background: linear-gradient(to right, rgba(218,165,33,0.7), rgba(218,165,33,0));
+  -webkit-mask-image: linear-gradient(to right, black 0%, transparent 100%);
+  mask-image: linear-gradient(to right, black 0%, transparent 100%);
+  pointer-events: none;
+}
+
+.golden-right {
+  display: flex;
+  flex: 1.2;
+  justify-content: flex-end;
+}
+
+.golden-poster {
+  width: 100%;
+  max-width: 700px;
+  height: auto;
+  display: block;
+}
+
+.golden-banner {
+  position: absolute;
+  left: 50%;
+  bottom: 35px;
+  transform: translateX(-50%);
+  width: 80%;
+  max-width: 820px;
+  text-align: center;
+  background: rgba(53, 50, 50, 0.21);
+  backdrop-filter: blur(18px) saturate(140%);
+  -webkit-backdrop-filter: blur(18px) saturate(140%);
+  border: 1px solid rgba(255, 255, 255, 0.35);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.25);
+  color: #fff;
+  padding: 18px 20px;
+  border-radius: 40px;
+  white-space: nowrap;
+  z-index: 10;
+}
+
+.golden-banner p {
+  margin: 0;
+  font-size: 28px;
+  font-weight: 600;
+  text-shadow: 0 1px 5px rgba(0, 0, 0, 0.4);
+}
+
+/* Series Section */
+.series {
+  background: #0a0a14;
+  color: #fff;
+  padding: 40px 60px;
+}
+
+.series-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.series-top h2 {
+  font-size: 28px;
+  margin: 0;
+}
+
+.series-top a {
+  color: #4da3ff;
+  text-decoration: none;
+  font-size: 14px;
+}
+
+.series-filters {
+  display: flex;
+  align-items: center;
+  gap: 27px;
+  margin-bottom: 20px;
+  overflow-x: auto;
+}
+
+.genre {
+  padding: 6px 16px;
+  border-radius: 20px;
+  border: none;
+  background: #1c1c28;
+  color: #fff;
+  white-space: nowrap;
+  cursor: pointer;
+}
+.genre:hover{
+  background: #EC5BAA;
+  color: #fff;
+}
+.arrow {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  border: none;
+  background: #1c1c28;
+  color: #fff;
+  font-size: 20px;
+  cursor: pointer;
+  flex-shrink: 0;
+}
+
+.series-grid {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  gap: 16px;
+}
+
+.series-card {
+  position: relative;
+  border-radius: 12px;
+  overflow: hidden;
+  aspect-ratio: 2 / 3;
+  background: #1a1a26;
+  cursor: pointer;
+}
+
+.series-card img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.series-card button {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  border: none;
+  background: rgba(0,0,0,0.6);
+  color: #fff;
+  font-size: 18px;
+  cursor: pointer;
+}
+
+/* Price Section */
+.price {
+  background: #0a0a14;
+  padding: 40px 60px;
+}
+.price-cards{
+  display: flex;
+  gap: 70px;
+}
+.basic{
+  width: 300px;
+  height: 520px;
+}
+.suggested{
+  width: 400px;
+  height: 880px;
+}
+
+/* Collection Section */
+.collection {
+  padding: 40px 60px;
+  background: #0a0a14;
+  color: #fff;
+  overflow: hidden;
+}
+
+.collection-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 24px;
+}
+
+.collection-top h2 {
+  font-size: 28px;
+  font-weight: 700;
+  margin: 0;
+}
+.collection-toggle {
+  display: flex;
+  background: #1a1a2e;
+  border: 1px solid #333;
+  border-radius: 20px;
+  padding: 4px;
+  gap: 4px;
+}
+
+.toggle-btn {
+  background: transparent;
+  color: #888;
+  border: none;
+  padding: 6px 16px;
+  border-radius: 16px;
+  font-size: 13px;
+  cursor: pointer;
+}
+
+.toggle-btn.active {
+  background: #0aa5ff;
+  color: #fff;
+}
+
+.collection-row {
+  display: flex;
+  gap: 24px;
+  overflow-x: auto;
+  scrollbar-width: none;
+  padding: 10px 5px 10px 10px;
+}
+.collection-row::-webkit-scrollbar {
+  display: none;
+}
+.collection-card {
+  position: relative;
+  min-width: 200px;
+  width: 200px;
+  height: 280px;
+  border-radius: 12px;
+  overflow: visible;
+  cursor: pointer;
+  flex-shrink: 0;
+}
+.collection-card::before,
+.collection-card::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border-radius: 12px;
+  background: #222;
+  z-index: 0;
+}
+
+.collection-card::before {
+  transform: translate(10px, 0) scale(0.96);
+  opacity: 0.6;
+}
+
+.collection-card::after {
+  transform: translate(20px, 0) scale(0.92);
+  opacity: 0.3;
+}
+
+.collection-card img {
+  position: relative;
+  z-index: 2;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 12px;
+  display: block;
+}
+
+/* Continue watching section */
+.continue {
+  background: #0a0a14;
+  color: #fff;
+  padding-top: 40px;
+}
+
+.continue-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.continue-top h2 {
+  font-size: 28px;
+  margin-left: 35px;
+}
+
+.continue-top a {
+  color: #4da3ff;
+  text-decoration: none;
+  font-size: 14px;
+}
+.continue-cards{
+  display: flex;
+  justify-content: flex-end;
+  gap: 20px;
+  cursor: pointer;
+  margin-left: 35px;
+}
+.continue-cards img{
+  width: 480px;
+  height: 280px;
+}
+.continue-cards .kungfu{
+  margin-left: 20px;
+}
+
+
+/* Characters Section */
+.characters {
+  background: #0a0a14;
+  color: #fff;
+  padding-top: 50px;
+  padding-bottom: 70px;
+}
+.characters h2{
+  font-size: 28px;
+  margin-left: 35px;
+  margin-bottom: 20px;
+}
+.character-cards{
+  display: flex;
+  justify-content: flex-end;
+  gap: 35px;
+  width: 100%;
+  height: 100%;
+}
+
+/* Kids Section */
+.kids{
+  padding-top: 80px;
+  background-color: #228EE6;
+  padding-bottom: 80px;
+}
+.kids h2{
+  font-size: 28px;
+  text-align: center;
+  margin-bottom: 30px;
+}
+.kids p{
+  font-size: 16px;
+  text-align: center;
+}
+.kids-cards{
+  display: flex;
+  gap: 12px;
+  padding-left: 80px;
+  padding-top: 20px;
+}
+.kids-cards .sing{
+  width: 260px;
+  height: 450px;
+}
+.kids-cards .panda{
+  width: 400px;
+  height: 450px;
+}
+.kids-cards .raya{
+  width: 500px;
+  height: 450px;
+}
+
+/* FAQ Section */
+.faq {
+  background: #030a1b;
+  padding: 60px 20px;
+  color: #fff;
+  text-align: center;
+}
+
+.faq h2 {
+  font-size: 28px;
+  font-weight: 700;
+  margin-bottom: 40px;
+}
+
+.faq-list {
+  max-width: 700px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  text-align: left;
+}
+
+.faq-item {
+  background: #0a0f22;
+  border: 1px solid #E93F9C;
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+.faq-question {
+  width: 100%;
+  background: transparent;
+  color: #fff;
+  border: none;
+  padding: 18px 20px;
+  font-size: 15px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  cursor: pointer;
+}
+
+.faq-question i {
+  color: #fff;
+  transition: transform 0.3s;
+}
+
+.faq-item.active .faq-question i {
+  transform: rotate(180deg);
+}
+
+.faq-answer {
+  display: none;
+  padding: 0 20px 18px 20px;
+  color: #bbb;
+  font-size: 14px;
+  line-height: 1.5;
+}
+
+.faq-item.active .faq-answer {
+  display: block;
+}
+
+/* Studios Section */
+.studios {
+  background: #030a1b;
+  padding: 40px 20px 80px 20px;
+  color: #fff;
+  text-align: center;
+}
+
+.studios h2 {
+  font-size: 28px;
+  font-weight: 700;
+  margin-bottom: 30px;
+}
+
+.studios-grid {
+  max-width: 900px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 20px;
+}
+
+.studio-card img {
+  width: 140px;
+  height: 140px;
+  object-fit: contain;
+}
+
+.footer {
+  background: #030a1b;
+  padding: 50px 20px 30px 20px;
+  color: #fff;
+  text-align: center;
+}
+
+.footer-links {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 24px;
+  margin-bottom: 18px;
+}
+
+.footer-links-second-row {
+  gap: 28px;
+  margin-bottom: 50px;
+}
+.footer-links-second-row a{
+  color: #fff;
+  text-decoration: none;
+  font-size: 15px;
+  font-weight: 500;
+}
+.footer-links-second-row a i{
+  font-size: 10px;
+}
+
+.footer-links a {
+  color: #fff;
+  text-decoration: none;
+  font-size: 15px;
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.footer-links a:hover {
+  color: #ff2e7e;
+}
+
+.footer-links a i {
+  font-size: 10px;
+}
+.footer-links-second-row {
+  margin-bottom: 50px;
+}
+.footer-links-second-row a{
+  color: #fff;
+  text-decoration: none;
+  font-size: 15px;
+  font-weight: 500;
+}
+.footer-links-second-row a i{
+  font-size: 10px;
+}
+.footer-links-second-row a:hover {
+  color: #ff2e7e;
+}
+
+
+.footer-socials {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  margin-top: 20px;
+  margin-bottom: 30px;
+}
+
+.footer-socials a {
+  width: 40px;
+  height: 40px;
+  background: #fff;
+  color: #030a1b;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 18px;
+  text-decoration: none;
+}
+
+.footer-socials a:hover {
+  background: #ff2e7e;
+  color: #fff;
+}
+
+@keyframes dance {
+  0% { transform: scale(1) rotate(0deg) translateY(0);}
+  25% { transform: scale(1.05) rotate(-2deg) translateY(-5px);}
+  50% { transform: scale(1.08) rotate(2deg) translateY(0);}
+  75% { transform: scale(1.05) rotate(-2deg) translateY(-5px);}
+  100% { transform: scale(1.05) rotate(0deg) translateY(0);}
+}
+
+ .trend-card, .movie-card, .series-card, .collection-card, .continue-cards img, .character-cards img, .studio-card, .kids-cards img{
+    transition: transform 0.3s ease;
+}
+
+.trend-card:hover img,
+.movie-card:hover img,
+.series-card:hover img,
+.collection-card:hover img,
+.continue-cards img:hover,
+.character-cards img:hover,
+.studio-card:hover img,
+.kids-cards img:hover {
+  animation: dance 2s ease-in-out infinite;
+}
+
+.trend-card:hover,
+.movie-card:hover,
+.series-card:hover,
+.collection-card:hover {
+  transform: translateY(-5px);
+}
+
+@media (max-width: 1024px) {
+  nav {
+    padding-left: 40px;
+    padding-right: 40px;
+  }
+  nav ul {
+    margin-right: 0;
+    gap: 18px;
+  }
+  .nav-bar ul {
+    gap: 18px;
+  }
+  .hero-logos {
+    gap: 12px;
+  }
+  .bg-img{
+    max-width: 1024px;
+  }
+  .hero-content {
+    left: 40px;
+    width: 480px;
+  }
+  .films-poster {
+    right: 100px;
+    width: 420px;
+  }
+  .witcher-logo {
+    left: 40px;
+    width: 350px;
+    right: 30px;
+  }
+  .trends, .movies, .series, .collection {
+    padding: 40px 40px;
+  }
+  .trends-grid, .movies-grid, .series-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+  .golden-globe {
+    padding: 40px 40px 90px 40px;
+  }
+  .price-cards {
+    gap: 30px;
+    justify-content: center;
+  }
+  .basic {
+    width: 260px;
+    height: auto;
+  }
+  .basic img, .suggested img {
+    width: 100%;
+    height: auto;
+    display: block;
+  }
+  .suggested {
+    width: 320px;
+    height: auto;
+  }
+  .continue-cards{
+    justify-content: flex-start;
+    gap: 40px;
+  }
+  .continue-cards img {
+    width: 45%;
+    height: auto;
+  }
+  .killers{
+    display: none;
+  }
+  .character-cards {
+    flex-wrap: wrap;
+    justify-content: center;
+    padding: 0 20px;
+  }
+  .character-cards img {
+    width: 140px;
+    height: auto;
+  }
+  .kids-cards {
+    padding-left: 20px;
+    padding-right: 20px;
+    justify-content: center;
+  }
+  .kids-cards .sing, .kids-cards .panda, .kids-cards .raya {
+    width: 32%;
+    height: auto;
+  }
+  .studios-grid {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+@media (max-width: 768px) {
+  .hero-section {
+    height: 620px;
+  }
+  nav {
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+  .hamburger {
+    display: block;
+  }
+
+  .hero-logos {
+    display: none;
+  }
+  .nav-bar {
+    display: none;
+    position: fixed;
+    top: 0;
+    right: 0;
+    width: 70%;
+    max-width: 300px;
+    height: 100vh;
+    background: #fff;
+    padding: 20px;
+    z-index: 200;
+    box-shadow: -5px 0 20px rgba(0,0,0,0.3);
+  }
+
+  .nav-bar.active {
+    display: block;
+  }
+
+  .close-btn {
+    display: block;
+    background: #000;
+    border: none;
+    border-radius: 6px;
+    color: #fff;
+    font-size: 18px;
+    padding: 6px 11px;
+    cursor: pointer;
+    margin-bottom: 20px;
+  }
+
+  .nav-bar ul {
+    flex-direction: column;
+    gap: 0;
+    list-style: none;
+  }
+
+  .nav-bar ul li {
+    text-align: center;
+    border-bottom: 1px solid black;
+    padding: 18px 0;
+  }
+
+  .nav-bar ul li a {
+    color: #000;
+    text-decoration: none;
+    font-size: 16px;
+    font-family: 'Lato', sans-serif;
+  }
+
+  .hero-logos {
+    display: none;
+  }
+  .bg-img{
+    max-width: 768px;
+  }
+  .witcher-logo {
+    left: 40px;
+    top: 120px;
+    width: 300px;
+  }
+  .witcher-logo img {
+    width: 100%;
+    height: auto;
+  }
+  .hero-content {
+    left: 20px;
+    top: 340px;
+    width: 90%;
+    max-width: 500px;
+  }
+  .hero-content h2 {
+    font-size: 32px;
+  }
+  .hero-content p br {
+    display: none;
+  }
+  .films-poster {
+    display: none;
+  }
+  .trends, .movies, .series, .collection, .price {
+    padding: 30px 20px;
+  }
+  .trends-grid, .movies-grid, .series-grid {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 12px;
+  }
+  .movies-filters, .series-filters {
+    gap: 10px;
+  }
+  /* Golden Globe - stack */
+  .golden-globe {
+    flex-direction: column;
+    padding: 30px 20px 90px 20px;
+    text-align: center;
+  }
+  .golden-left, .golden-right {
+    width: 100%;
+    justify-content: center;
+  }
+  .golden-poster, .globe-icon {
+    max-width: 480px;
+    margin: 0 auto;
+  }
+  .golden-banner {
+    width: 90%;
+    white-space: normal;
+    padding: 14px 16px;
+  }
+  .golden-banner p {
+    font-size: 20px;
+  }
+  /* Price */
+  .price-cards {
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+  }
+  .basic, .suggested {
+    width: 100%;
+    max-width: 360px;
+    height: auto;
+  }
+  /* Continue watching */
+  .continue-top h2 {
+    margin-left: 20px;
+  }
+  .continue {
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+  .continue-cards {
+    flex-direction: column;
+    align-items: center;
+    margin-left: 0;
+  }
+  .continue-cards img {
+    width: 100%;
+    max-width: 480px;
+    height: auto;
+  }
+  .continue-cards .kungfu {
+    margin-left: 0;
+  }
+  /* Characters */
+  .characters h2 {
+    margin-left: 20px;
+  }
+  .character-cards {
+    gap: 16px;
+  }
+  .display{
+    display: none;
+  }
+  /* Kids */
+  .kids {
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+  .kids p br {
+    display: none;
+  }
+  .kids-cards {
+    flex-direction: column;
+    align-items: center;
+    padding-left: 0;
+  }
+  .kids-cards .sing, .kids-cards .panda, .kids-cards .raya {
+    width: 100%;
+    max-width: 360px;
+    height: auto;
+  }
+  .studios-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+  .studio-card img {
+    width: 100px;
+    height: 100px;
+  }
+}
+
+@media (max-width: 425px) {
+  .hero-section {
+    height: 580px;
+  }
+  .bg-img{
+    position: absolute;
+    max-width: 425px;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+  .witcher-logo{
+    display: none;
+  }
+  .hero-logos img {
+    height: 20px;
+    width: 20px;
+  }
+  .hero-content {
+    top: 300px;
+  }
+  .hero-content h2 {
+    font-size: 28px;
+  }
+  .hero-content p {
+    font-size: 13px;
+  }
+  .hero-content img {
+    width: 160px;
+    height: auto;
+  }
+  .hero-content-button {
+    flex-wrap: wrap;
+  }
+  .trends-top h2, .movies-top h2, .series-top h2, .collection-top h2, .continue-top h2, .characters h2 {
+    font-size: 22px;
+  }
+  .trends-grid, .movies-grid, .series-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+  }
+  .collection-top {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 12px;
+  }
+  .collection-card {
+    min-width: 160px;
+    width: 160px;
+    height: 230px;
+  }
+  .golden-banner p {
+    font-size: 17px;
+  }
+  .kids h2, .faq h2, .studios h2 {
+    font-size: 22px;
+  }
+  .kids p {
+    font-size: 14px;
+  }
+  .faq {
+    padding: 40px 16px;
+  }
+  .studios-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 14px;
+  }
+  .footer-links, .footer-links-second-row {
+    gap: 14px;
+  }
+  .footer-links a, .footer-links-second-row a {
+    font-size: 13px;
+  }
+}
+
+@media (max-width: 375px) {
+  nav {
+    padding-left: 14px;
+    padding-right: 14px;
+  }
+  .hero-content {
+    left: 14px;
+    width: 92%;
+  }
+  .hero-content h2 {
+    font-size: 26px;
+  }
+  .btn-watch, .btn-info {
+    padding: 9px 14px;
+    font-size: 13px;
+  }
+  .trends, .movies, .series, .collection, .price {
+    padding: 28px 14px;
+  }
+  .collection-card {
+    min-width: 150px;
+    width: 150px;
+    height: 220px;
+  }
+  .golden-banner p {
+    font-size: 15px;
+  }
+  .faq-question {
+    font-size: 14px;
+    padding: 16px;
+  }
+  .studio-card img {
+    width: 90px;
+    height: 90px;
+  }
+}
+
+@media (max-width: 320px) {
+  .hero-section {
+    height: 540px;
+  }
+  .hero-content {
+    top: 280px;
+  }
+  .hero-content h2 {
+    font-size: 24px;
+  }
+  .hero-content-button {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  .btn-watch, .btn-info {
+    width: 100%;
+    justify-content: center;
+  }
+  .trends-grid, .movies-grid, .series-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 8px;
+  }
+  .collection-card {
+    min-width: 130px;
+    width: 130px;
+    height: 190px;
+  }
+  .golden-banner {
+    bottom: 20px;
+  }
+  .golden-banner p {
+    font-size: 14px;
+  }
+  .studios-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .footer-socials {
+    gap: 12px;
+  }
+  .footer-socials a {
+    width: 34px;
+    height: 34px;
+    font-size: 15px;
+  }
+}
+   
+

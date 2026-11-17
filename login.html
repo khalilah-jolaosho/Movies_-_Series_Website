@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Login</title>
+  <link rel="stylesheet" href="auth.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" />
+</head>
+<body>
+  <div class="auth-container">
+    <div class="auth-left">
+      <h1>Welcome</h1>
+      <div class="tabs">
+        <a href="login.html" class="active">LOGIN</a>
+        <a href="signup.html">SIGNUP</a>
+      </div>
+
+      <!-- STEP 1 -->
+      <div class="step active" id="loginStep1">
+        <form id="loginForm">
+          <div class="field">
+            <input type="text" id="loginUsername" placeholder="Username" required>
+            <span class="user-icon"><i class="fa-solid fa-user"></i></span>
+          </div>
+
+          <div class="field">
+            <input type="password" id="loginPassword" placeholder="Password" required>
+            <span class="eye" onclick="togglePassword('loginPassword', this)"><i class="fa-solid fa-eye"></i></span>
+          </div>
+
+          <p class="error" id="loginError"></p>
+          <button type="button" class="btn" onclick="doLogin()">Login</button>
+
+          <p class="small-link">
+            Don't have an account? <a href="signup.html">Sign up</a>
+          </p>
+        </form>
+      </div>
+
+      <!-- STEP 2 -->
+      <div class="step" id="loginStep2">
+        <img id="loginAvatar" src="images/moana.png" class="final-avatar">
+        <p id="loginUsernameShow"></p>
+        <h2>You have successfully logged in</h2>
+        <button class="btn" onclick="goToHome()">Start Watching</button>
+      </div>
+    </div>
+
+    <div class="auth-right">
+      <img src="assets/subtract.svg">
+    </div>
+  </div>
+  <script src="login.js"></script>
+</body>
+</html>

@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sign Up</title>
+  <link rel="stylesheet" href="auth.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" />
+</head>
+<body>
+  <div class="auth-container">
+    <div class="auth-left">
+      <h1>Welcome</h1>
+      <div class="tabs">
+        <a href="login.html">LOGIN</a>
+        <a href="signup.html" class="active">SIGNUP</a>
+      </div>
+
+      <!-- STEP 1 -->
+      <div class="step active" id="step1">
+        <form id="signupForm">
+          <input type="text" id="fullname" placeholder="Fullname" required>
+          <input type="email" id="email" placeholder="Email" required>
+
+          <div class="field">
+            <input type="password" id="password" placeholder="Password" required>
+            <span class="eye" onclick="togglePassword('password', this)"><i class="fa-solid fa-eye"></i></span>
+          </div>
+
+          <div class="field">
+            <input type="password" id="confirmPassword" placeholder="Confirm password" required>
+            <span class="eye" onclick="togglePassword('confirmPassword', this)"><i class="fa-solid fa-eye"></i></span>
+          </div>
+
+          <div class="field">
+            <input type="text" id="username" placeholder="Username" required>
+            <span class="user-icon"><i class="fa-solid fa-user"></i></span>
+          </div>
+
+          <p class="error" id="errorMsg"></p>
+          <button type="button" class="btn" onclick="goToProfile()">Continue</button>
+        </form>
+      </div>
+
+      <!-- STEP 2 -->
+      <div class="step" id="step2">
+        <h2 id="greeting">Hi</h2>
+
+        <div class="top-preview" id="topPreview">
+          <i class="fa-solid fa-user"></i>
+        </div>
+
+        <p class="subtitle">choose your profile</p>
+
+        <div class="profile-grid-figma">
+          <img src="assets/profile-1.svg" onclick="selectProfile(this)">
+          <img src="assets/profile-2.svg" onclick="selectProfile(this)">
+          <img src="assets/profile-3.svg" onclick="selectProfile(this)">
+          <img src="assets/profile-4.svg" onclick="selectProfile(this)">
+          <img src="assets/profile-5.svg" onclick="selectProfile(this)">
+          <img src="assets/profile-6.svg" onclick="selectProfile(this)">
+          <img src="assets/profile-7.svg" onclick="selectProfile(this)">
+          <img src="assets/profile-8.svg" onclick="selectProfile(this)">
+          <img src="assets/profile-9.svg" onclick="selectProfile(this)">
+          <label class="upload-box">
+            <i class="fa-solid fa-image"></i>
+            <input type="file" accept="image/*" hidden onchange="uploadAvatar(event)">
+          </label>
+        </div>
+
+        <button class="btn-confirm" onclick="finishSignup()">Confirm</button>
+      </div>
+
+      <!-- STEP 3 -->
+      <div class="step" id="step3">
+        <img id="finalAvatar" src="images/moana.png" class="final-avatar">
+        <p id="finalUsername"></p>
+        <h2>Your account has been successfully created</h2>
+        <button class="btn" onclick="goToHome()">Start Watching</button>
+      </div>
+    </div>
+
+    <div class="auth-right">
+      <img src="assets/subtract.svg">
+    </div>
+  </div>
+  <script src="auth.js"></script>
+</body>
+</html>
