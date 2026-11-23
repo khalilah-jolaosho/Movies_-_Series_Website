@@ -20,7 +20,6 @@ function doLogin() {
     return;
   }
 
-  // Get the user saved during signup
   const savedUser = JSON.parse(localStorage.getItem('movieUser'));
 
   if (!savedUser) {
@@ -33,17 +32,14 @@ function doLogin() {
     return;
   }
 
-  // SUCCESS - show step 2 like signup last page
   document.getElementById('loginUsernameShow').textContent = username;
   document.getElementById('loginAvatar').src = savedUser.avatar || "images/moana.png";
 
   document.getElementById('loginStep1').classList.remove('active');
   document.getElementById('loginStep2').classList.add('active');
 
-  // Hide right image, like signup profile page
   document.querySelector('.auth-container').classList.add('profile-mode');
 }
 
 function goToHome() {
   window.location.href = "index.html";
-}

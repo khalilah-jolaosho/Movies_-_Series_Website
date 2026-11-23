@@ -251,6 +251,10 @@ nav ul li a:hover{
   overflow-x: auto;
 }
 
+.movies-filters .genre.active {
+  background: white;
+  color: black;
+}
 .genre {
   padding: 6px 16px;
   border-radius: 20px;

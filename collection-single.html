@@ -3,36 +3,32 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>The Dark Knight Collection</title>
+  <title>Collection</title>
   <link rel="stylesheet" href="style.css">
   <link rel="stylesheet" href="collection-single.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" />
 </head>
 <body class="collection-page">
 
-  <!-- HERO -->
   <section class="collection-hero">
-    <!-- LAYER 1: BG IMG -->
     <div class="hero-bg">
-      <img src="assets/bg-img.svg" alt="The Dark Knight">
+      <img src="assets/bg-img.svg" alt="">
     </div>
-
-    <!-- LAYER 2: GRADIENT ON TOP OF IMG -->
     <div class="hero-gradient">
       <img src="assets/gradient-2.svg" alt="">
     </div>
 
-    <!-- LAYER 3: NAV + TEXT ON TOP -->
     <nav class="movie-nav">
       <img class="light-logo" src="assets/logo-light-1.svg" alt="Logo">
-      <div class="nav-bar">
+      <div class="nav-bar" id="navBar">
+        <button class="close-btn" id="closeBtn"><i class="fa-solid fa-xmark"></i></button>
         <ul>
           <li><a href="index.html">Home</a></li>
-          <li><a href="#">Pricing</a></li>
-          <li><a href="#">Movies</a></li>
-          <li><a href="#">Series</a></li>
+          <li><a href="index.html#price">Pricing</a></li>
+          <li><a href="movies.html">Movies</a></li>
+          <li><a href="series.html">Series</a></li>
           <li><a href="collection.html">Collection</a></li>
-          <li><a href="#">FAQ</a></li>
+          <li><a href="index.html#faq">FAQ</a></li>
         </ul>
       </div>
       <div class="hero-logos">
@@ -41,39 +37,23 @@
         <img src="assets/log-in-interaction.svg" alt="Login">
         <img src="assets/sun.svg" alt="Theme">
       </div>
+      <button class="hamburger" id="hamburger"><i class="fa-solid fa-bars"></i></button>
     </nav>
 
     <div class="collection-hero-content">
-      <h1>The Dark Knight Collection</h1>
-      <p>When the menace known as the Joker wreaks havoc and chaos on the people of Gotham, Batman must accept one of the greatest psychological and physical tests of his ability to fight injustice.</p>
+      <h1 id="collectionTitle">Loading...</h1>
+      <p id="collectionDesc"></p>
       <p class="collection-stars">
-        <i class="fa-solid fa-star"></i>
-        <i class="fa-solid fa-star"></i>
-        <i class="fa-solid fa-star"></i>
-        <i class="fa-solid fa-star"></i>
-        <i class="fa-solid fa-star"></i>
-        <span>IMDb</span>
-        <span>DC</span>
+        <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+        <span>IMDb</span><span>DC</span>
       </p>
     </div>
   </section>
 
-  <!-- 3 MOVIES INSIDE THIS COLLECTION -->
   <section class="single-collection">
-    <div class="single-grid">
-      <div class="single-card">
-        <img src="assets/batman-1.svg" alt="Batman Begins">
-      </div>
-      <div class="single-card">
-        <img src="assets/batman-2.svg" alt="The Dark Knight">
-      </div>
-      <div class="single-card">
-        <img src="assets/batman-3.svg" alt="The Dark Knight Rises">
-      </div>
-    </div>
+    <div class="single-grid" id="collectionGrid"></div>
   </section>
 
-  <!-- FOOTER -->
   <footer class="movie-footer">
     <div class="footer-links">
       <a href="#">Get the OMO App <i class="fa-solid fa-chevron-right"></i></a>
@@ -96,5 +76,83 @@
     </div>
   </footer>
 
+  <script src="script.js"></script>
+  <script src="movie_db.js"></script>
+  <script>
+   
+    const collections = {
+      batman: {
+        title: 'The Dark Knight Collection',
+        desc: 'When the menace known as the Joker wreaks havoc and chaos on the people of Gotham, Batman must accept one of the greatest psychological and physical tests of his ability to fight injustice.',
+        filter: (m) => m.title.includes('Batman') || m.title.includes('Dark Knight')
+      },
+      animation: {
+        title: 'Animation Collection',
+        desc: 'The best animated movies for the whole family.',
+        filter: (m) => m.category === 'Animation'
+      },
+      action: {
+        title: 'Action Collection',
+        desc: 'High-octane action, chases and fights.',
+        filter: (m) => m.category === 'Action'
+      },
+      scifi: {
+        title: 'Sci-Fi Collection',
+        desc: 'Space, time travel and the future.',
+        filter: (m) => m.category === 'SciFi'
+      },
+      comedy: {
+        title: 'Comedy Collection',
+        desc: 'Laugh out loud movies.',
+        filter: (m) => m.category === 'Comedy'
+      },
+      drama: {
+        title: 'Drama Collection',
+        desc: 'Powerful stories and performances.',
+        filter: (m) => m.category === 'Drama'
+      }
+    };
+
+    document.addEventListener('dataReady', () => {
+      
+      const name = new URLSearchParams(location.search).get('collection') || 'batman';
+      const col = collections[name] || collections.batman;
+
+      document.getElementById('collectionTitle').textContent = col.title;
+      document.getElementById('collectionDesc').textContent = col.desc;
+      document.title = col.title;
+
+      const grid = document.getElementById('collectionGrid');
+      const items = movies.filter(col.filter);
+
+      if (items.length === 0) {
+        grid.innerHTML = '<p style="color:white">No movies in this collection yet.</p>';
+        return;
+      }
+
+      const localCovers = {
+        batman: ['assets/collection-animation-7.svg', 'assets/collection-animation-5.svg'],
+        animation: ['assets/collection-animation-2.svg', 'assets/collection-animation-1.svg'],
+        action: ['assets/collection-animation-3.svg', 'assets/collection-animation-11.svg'],
+        scifi: ['assets/collection-animation-8.svg', 'assets/collection-animation-4.svg'],
+        comedy: ['assets/collection-animation-9.svg'],
+        drama: ['assets/collection-animation-10.svg']
+      };
+
+      const coversToShow = localCovers[name] || localCovers.batman;
+
+      grid.innerHTML = coversToShow.map((img, i) => {
+        const m = items[i] || items[0];
+        const realIndex = m ? movies.findIndex(x => x.title === m.title) : 0;
+        return `
+          <div class="single-card">
+            <a href="movie-selected.html?movie=${realIndex}&type=movie">
+              <img src="${img}" alt="${col.title}">
+            </a>
+          </div>
+        `;
+      }).join('');
+    });
+  </script>
 </body>
 </html>

@@ -56,7 +56,6 @@ nav ul li a:hover{
     height: 24px;
     width: 24px;
 }
-
 .hamburger{
   display: none;
   background: none;
@@ -68,7 +67,6 @@ nav ul li a:hover{
 .close-btn{
   display: none;
 }
-
 section{
     padding: 40px;
 }
@@ -86,7 +84,6 @@ h2{
   border-radius: 20px;
   padding: 5px;
 }
-
 .search-bar input {
   width: 100%;
   background: transparent;
@@ -96,11 +93,9 @@ h2{
   border-radius: 20px;
   padding: 10px 40px 10px 15px;
 }
-
 .search-bar input::placeholder {
   color: #aaa;
 }
-
 .search-bar .search-icon {
   position: absolute;
   right: 14px;
@@ -109,6 +104,33 @@ h2{
   pointer-events: none;
   font-size: 16px;
   color: #aaa;
+}
+
+.movies-filters {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin: 25px 0 10px 0;
+}
+.movies-filters .genre {
+  background: rgba(255, 255, 255, 0.1);
+  color: white;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  padding: 8px 18px;
+  border-radius: 50px;
+  cursor: pointer;
+  font-family: "Lato", sans-serif;
+  font-size: 14px;
+}
+.movies-filters .genre:hover {
+  background: rgba(255, 255, 255, 0.25);
+}
+.movies-filters .genre.active {
+  background: white;
+  color: black;
+  border-color: white;
+  font-weight: 700;
 }
 
 .movies-grid{
@@ -123,7 +145,6 @@ h2{
     height: 290px;
     cursor: pointer;
 }
-
 @media (max-width: 1024px) {
   nav {
     padding-left: 40px;
@@ -141,7 +162,6 @@ h2{
     width: 60%;
   }
 }
-
 @media (max-width: 768px) {
   nav {
     padding-left: 20px;
@@ -157,7 +177,6 @@ h2{
   .hamburger {
     display: block;
   }
-
   .nav-bar {
     display: none;
     position: fixed;
@@ -174,7 +193,6 @@ h2{
   .nav-bar.active {
     display: block;
   }
-
   .close-btn {
     display: block;
     background: #000;
@@ -186,7 +204,6 @@ h2{
     cursor: pointer;
     margin-bottom: 20px;
   }
-
   nav ul {
     margin-right: 0;
     flex-direction: column;
@@ -205,7 +222,6 @@ h2{
   nav ul li a:hover {
     text-decoration: none;
   }
-
   section {
     padding: 20px;
   }
@@ -224,7 +240,6 @@ h2{
     height: 220px;
   }
 }
-
 @media (max-width: 480px) {
   .movies-grid {
     grid-template-columns: repeat(2, 1fr);

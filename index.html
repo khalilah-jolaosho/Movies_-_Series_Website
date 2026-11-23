@@ -1,6 +1,11 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+<script>
+  if (!localStorage.getItem('movieUser')) {
+    window.location.href = 'signup.html';
+  }
+</script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Movies & Series Website</title>
@@ -74,27 +79,22 @@
 
         <div class="trends-grid">
             <div class="trend-card">
-            <img src="assets/trends-1.svg">
+                <a href="movie-selected.html?movie=0&type=trending"><img src="assets/trends-1.svg"></a>
             </div>
-
             <div class="trend-card">
-            <img src="assets/trends-2.svg">
+                <a href="movie-selected.html?movie=1&type=trending"><img src="assets/trends-2.svg"></a>
             </div>
-
             <div class="trend-card">
-            <img src="assets/trends-3.svg">
+                <a href="movie-selected.html?movie=2&type=trending"><img src="assets/trends-3.svg"></a>
             </div>
-
             <div class="trend-card">
-            <img src="assets/trends-4.svg">
+                <a href="movie-selected.html?movie=3&type=trending"><img src="assets/trends-4.svg"></a>
             </div>
-
             <div class="trend-card">
-            <img src="assets/trends-5.svg">
+                <a href="movie-selected.html?movie=4&type=trending"><img src="assets/trends-5.svg"></a>
             </div>
-
             <div class="trend-card">
-            <img src="assets/trends-6.svg">
+                <a href="movie-selected.html?movie=5&type=trending"><img src="assets/trends-6.svg"></a>
             </div>
         </div>
     </section>
@@ -117,33 +117,28 @@
             <button class="genre">Animation</button>
             <button class="genre">Thriller</button>
             <button class="genre">Mystery</button>
-            <button class="genre">Sci-Fi</button>
+            <button class="genre">SciFi</button>
             <button class="arrow"><i class="fa-solid fa-angle-right"></i></button>
         </div>
 
         <div class="movies-grid">
-            <div class="movie-card">
-               <a href="movie-selected.html"><img src="assets/movie-1.svg"></a> 
+            <div class="movie-card" data-category="Drama">
+               <a href="movie-selected.html?movie=0&type=movie"><img src="assets/movie-1.svg"></a> 
             </div>
-
-            <div class="movie-card">
-                <a href="movie-selected.html"><img src="assets/movie-2.svg"></a>
+            <div class="movie-card" data-category="SciFi">
+                <a href="movie-selected.html?movie=1&type=movie"><img src="assets/movie-2.svg"></a>
             </div>
-
-            <div class="movie-card">
-                <a href="movie-selected.html"><img src="assets/movie-3.svg"></a>
+            <div class="movie-card" data-category="Action">
+                <a href="movie-selected.html?movie=2&type=movie"><img src="assets/movie-3.svg"></a>
             </div>
-
-            <div class="movie-card">
-                <a href="movie-selected.html"><img src="assets/movie-4.svg"></a>
+            <div class="movie-card" data-category="Action">
+                <a href="movie-selected.html?movie=3&type=movie"><img src="assets/movie-4.svg"></a>
             </div>
-
-            <div class="movie-card">
-                <a href="movie-selected.html"><img src="assets/movie-5.svg"></a>
+            <div class="movie-card" data-category="Thriller">
+                <a href="movie-selected.html?movie=4&type=movie"><img src="assets/movie-5.svg"></a>
             </div>
-
-            <div class="movie-card">
-                <a href="movie-selected.html"><img src="assets/movie-6.svg"></a>
+            <div class="movie-card" data-category="Action">
+                <a href="movie-selected.html?movie=5&type=movie"><img src="assets/movie-6.svg"></a>
             </div>
         </div>
     </section>
@@ -151,16 +146,13 @@
     <!-- Golden Globe Section -->
     <section class="golden-globe">
         <div class="golden-bg-blur"></div>
-
         <div class="golden-left">
             <img src="assets/img-200.svg" alt="Golden Globe Awards" class="globe-icon">
             <div class="left-blur"></div>
         </div>
-
         <div class="golden-right">
             <img src="assets/img-201.svg" alt="Golden Globe Movies" class="golden-poster">
         </div>
-
         <div class="golden-banner">
             <p>Watching Golden Globe 2024 Movies</p>
         </div>
@@ -190,27 +182,22 @@
 
         <div class="series-grid">
             <div class="series-card">
-                <img src="assets/series-1.svg">
+                <a href="movie-selected.html?movie=0&type=series"><img src="assets/series-1.svg"></a>
             </div>
-
             <div class="series-card">
-                <img src="assets/series-2.svg">
+                <a href="movie-selected.html?movie=1&type=series"><img src="assets/series-2.svg"></a>
             </div>
-
             <div class="series-card">
-                <img src="assets/series-3.svg">
+                <a href="movie-selected.html?movie=2&type=series"><img src="assets/series-3.svg"></a>
             </div>
-
             <div class="series-card">
-                <img src="assets/series-4.svg">
+                <a href="movie-selected.html?movie=3&type=series"><img src="assets/series-4.svg"></a>
             </div>
-
             <div class="series-card">
-                <img src="assets/series-5.svg">
+                <a href="movie-selected.html?movie=4&type=series"><img src="assets/series-5.svg"></a>
             </div>
-
             <div class="series-card">
-                <img src="assets/series-6.svg">
+                <a href="movie-selected.html?movie=5&type=series"><img src="assets/series-6.svg"></a>
             </div>
         </div>
     </section>
@@ -242,22 +229,22 @@
 
         <div class="collection-row" id="collection-row">
             <div class="collection-card">
-                <img src="assets/collection-animation-1.svg">
+                <a href="collection.html"><img src="assets/collection-animation-1.svg"></a>
             </div>
             <div class="collection-card">
-                <img src="assets/collection-animation-2.svg">
+                <a href="collection.html"><img src="assets/collection-animation-2.svg"></a>
             </div>
             <div class="collection-card">
-                <img src="assets/collection-animation-3.svg">
+                <a href="collection.html"><img src="assets/collection-animation-3.svg"></a>
             </div>
             <div class="collection-card">
-                <img src="assets/collection-animation-4.svg">
+                <a href="collection.html"><img src="assets/collection-animation-4.svg"></a>
             </div>
             <div class="collection-card">
-                <img src="assets/collection-animation-5.svg">
+                <a href="collection.html"><img src="assets/collection-animation-5.svg"></a>
             </div>
             <div class="collection-card">
-                <img src="assets/collection-animation-6.svg">
+                <a href="collection.html"><img src="assets/collection-animation-6.svg"></a>
             </div>
         </div>
     </section> 
@@ -296,12 +283,11 @@
         <p>Create kids profile, set parental control, and choose rating levels. Easily find new <br>favvrites by sorting by characters and using age filters.</p>
 
         <div class="kids-cards">
-            <img class="sing" src="assets/sing.svg" alt="">
-            <img class="panda" src="assets/panda.svg" alt="">
-            <img class="raya" src="assets/raya.svg" alt="">
+            <img class="sing" src="assets/sing.svg" alt="" onclick="location.href='movie-selected.html?movie=0&type=kids'" style="cursor:pointer">
+            <img class="panda" src="assets/panda.svg" alt="" onclick="location.href='movie-selected.html?movie=1&type=kids'" style="cursor:pointer">
+            <img class="raya" src="assets/raya.svg" alt="" onclick="location.href='movie-selected.html?movie=2&type=kids'" style="cursor:pointer">
         </div>
     </section>
-
 
         <!-- FAQ Section -->
     <section class="faq" id="faq">
@@ -392,6 +378,7 @@
         </div>
     </footer>
 
+    <script src="movie_db.js"></script>
     <script src="script.js"></script>
 </body>
 </html>

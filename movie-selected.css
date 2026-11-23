@@ -3,6 +3,7 @@
   color: white;
   margin: 0;
   font-family: Arial, sans-serif;
+  overflow-x: hidden;
 }
 
 /* HERO - BIG BG IMAGE */
@@ -62,6 +63,19 @@
   cursor: pointer;
 }
 
+.hamburger {
+  display: none;
+  background: none;
+  border: none;
+  color: #fff;
+  font-size: 24px;
+  cursor: pointer;
+}
+
+.close-btn {
+  display: none;
+}
+
 .movie-hero-content {
   display: flex;
   justify-content: space-between;
@@ -70,6 +84,7 @@
   padding-right: 100px;
   padding-top: 180px;
   padding-bottom: 40px;
+  gap: 40px;
 }
 
 .hero-left {
@@ -79,6 +94,7 @@
 .hero-left h1 {
   font-size: 48px;
   margin-bottom: 10px;
+  line-height: 1.15;
 }
 
 .movie-meta {
@@ -88,6 +104,7 @@
   color: #ccc;
   font-size: 14px;
   margin-bottom: 8px;
+  flex-wrap: wrap;
 }
 
 .movie-meta .dot {
@@ -120,6 +137,9 @@
   color: white;
   cursor: pointer;
   font-size: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .hero-right {
@@ -127,15 +147,19 @@
   flex-direction: column;
   align-items: flex-end;
   gap: 20px;
+  flex-shrink: 0;
 }
 
 .jw-logo {
   width: 340px;
+  max-width: 100%;
 }
 
 .movie-buttons {
   display: flex;
   gap: 10px;
+  flex-wrap: wrap;
+  justify-content: flex-end;
 }
 
 .btn-watch {
@@ -183,6 +207,7 @@
   object-fit: cover;
   border-radius: 12px;
   cursor: pointer;
+  display: block;
 }
 
 /* ABOUT */
@@ -212,6 +237,7 @@
   display: flex;
   gap: 20px;
   margin-bottom: 30px;
+  flex-wrap: wrap;
 }
 
 .genre {
@@ -231,6 +257,15 @@
   width: 100%;
   height: 100%;
   margin-top: -30px;
+  flex-wrap: wrap;
+}
+
+.characters img {
+  width: 110px;
+  height: 110px;
+  object-fit: cover;
+  border-radius: 50%;
+  display: block;
 }
 
 .suggestion {
@@ -294,6 +329,7 @@
   height: 300px;
   object-fit: cover;
   border-radius: 12px;
+  display: block;
 }
 
 .add-btn {
@@ -307,6 +343,10 @@
   border: 1px solid #fff;
   color: white;
   cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 2;
 }
 
 .comments-grid {
@@ -392,7 +432,452 @@
 .footer-socials {
   display: flex;
   justify-content: center;
-  gap: 20px;
+  gap: 14px;
   margin-top: 70px;
-  font-size: 28px;
+}
+
+.footer-socials a {
+  color: #fff;
+  background: #1a1a2e;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+  transition: 0.3s;
+}
+
+.footer-socials a:hover {
+  background: #228EE5;
+  transform: translateY(-2px);
+}
+
+.footer-socials a i {
+  font-size: 18px;
+}
+
+/* RESPONSIVE */
+@media (max-width: 1024px) {
+  .movie-nav {
+    padding: 20px 40px;
+    gap: 20px;
+  }
+
+  .nav-bar ul {
+    gap: 18px;
+  }
+
+  .movie-hero-content {
+    padding-left: 40px;
+    padding-right: 40px;
+    padding-top: 150px;
+  }
+
+  .hero-left h1 {
+    font-size: 38px;
+  }
+
+  .jw-logo {
+    width: 260px;
+  }
+
+  .scenes {
+    padding: 0 40px;
+  }
+
+  .scenes img {
+    height: 140px;
+  }
+
+  .about {
+    padding: 32px 40px 20px;
+  }
+
+  .suggestion {
+    padding: 5px 40px;
+  }
+
+  .suggestion-grid {
+    grid-template-columns: repeat(4, 1fr);
+  }
+
+  .comments {
+    padding: 40px 40px 30px;
+  }
+
+  .comments-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  .movie-footer {
+    padding: 50px 40px;
+  }
+}
+
+@media (max-width: 768px) {
+  .movie-nav {
+    padding: 16px 20px;
+  }
+
+  .hero-logos {
+    display: none;
+  }
+
+  .hamburger {
+    display: block;
+    margin-left: auto;
+  }
+
+  .nav-bar {
+    display: none;
+    position: fixed;
+    top: 0;
+    right: 0;
+    width: 70%;
+    max-width: 300px;
+    height: 100vh;
+    background: #fff;
+    padding: 20px;
+    z-index: 200;
+    box-shadow: -5px 0 20px rgba(0,0,0,0.3);
+  }
+
+  .nav-bar.active {
+    display: block;
+  }
+
+  .close-btn {
+    display: block;
+    background: #000;
+    border: none;
+    border-radius: 6px;
+    color: #fff;
+    font-size: 18px;
+    padding: 6px 11px;
+    cursor: pointer;
+    margin-bottom: 20px;
+  }
+
+  .nav-bar ul {
+    flex-direction: column;
+    gap: 0;
+  }
+
+  .nav-bar ul li {
+    text-align: center;
+    border-bottom: 1px solid #ddd;
+    padding: 18px 0;
+    width: 100%;
+  }
+
+  .nav-bar ul li a {
+    color: #000;
+    font-size: 16px;
+  }
+
+  .movie-hero {
+    min-height: auto;
+    padding-bottom: 20px;
+  }
+
+  .movie-hero-content {
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 110px 20px 24px 20px;
+    gap: 20px;
+  }
+
+  .hero-left {
+    max-width: 100%;
+  }
+
+  .hero-left h1 {
+    font-size: 30px;
+  }
+
+  .hero-right {
+    align-items: flex-start;
+    width: 100%;
+  }
+
+  .jw-logo {
+    width: 180px;
+  }
+
+  .movie-buttons {
+    justify-content: flex-start;
+  }
+
+  .scenes {
+    display: flex;
+    overflow-x: auto;
+    padding: 0 20px 6px 20px;
+    gap: 10px;
+    scroll-snap-type: x mandatory;
+    margin-top: 10px;
+  }
+
+  .scenes::-webkit-scrollbar {
+    display: none;
+  }
+
+  .scenes img {
+    flex: 0 0 160px;
+    height: 110px;
+    scroll-snap-align: start;
+  }
+
+  .about {
+    padding: 28px 20px 16px;
+  }
+
+  .about h1 {
+    font-size: 22px;
+  }
+
+  .about p {
+    font-size: 14px;
+  }
+
+  .genres {
+    gap: 10px;
+    margin-bottom: 20px;
+  }
+
+  .characters {
+    gap: 12px;
+    height: auto;
+    margin-top: 0;
+  }
+
+  .characters img {
+    width: 90px;
+    height: 90px;
+  }
+
+  .suggestion {
+    padding: 5px 20px;
+  }
+
+  .suggestion-grid {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 12px;
+  }
+
+  .suggest-card img {
+    height: 230px;
+  }
+
+  .comments {
+    padding: 32px 20px;
+  }
+
+  .comments-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 12px;
+  }
+
+  .movie-footer {
+    padding: 40px 20px;
+  }
+
+  .footer-socials {
+    margin-top: 40px;
+  }
+}
+
+@media (max-width: 425px) {
+  .light-logo {
+    width: 48px;
+  }
+
+  .hero-left h1 {
+    font-size: 26px;
+  }
+
+  .movie-meta {
+    font-size: 13px;
+  }
+
+  .movie-icons {
+    gap: 8px;
+  }
+
+  .icon-btn {
+    width: 38px;
+    height: 38px;
+  }
+
+  .jw-logo {
+    width: 150px;
+  }
+
+  .movie-buttons {
+    flex-direction: column;
+    width: 100%;
+  }
+
+  .btn-watch {
+    width: 100%;
+    justify-content: center;
+    text-align: center;
+  }
+
+  .btn-preview {
+    width: 100%;
+    justify-content: center;
+    text-align: center;
+  }
+
+  .scenes img {
+    flex-basis: 140px;
+    height: 100px;
+  }
+
+  .characters img {
+    width: 72px;
+    height: 72px;
+  }
+
+  .suggestion-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+  }
+
+  .suggest-card img {
+    height: 220px;
+  }
+
+  .comments-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .comment-card {
+    padding: 14px;
+  }
+
+  .footer-links {
+    gap: 14px;
+  }
+
+  .footer-links a {
+    font-size: 13px;
+  }
+}
+
+@media (max-width: 375px) {
+  .hero-left h1 {
+    font-size: 24px;
+  }
+
+  .about h1 {
+    font-size: 20px;
+  }
+
+  .section-top h2 {
+    font-size: 20px;
+  }
+
+  .about p {
+    font-size: 13px;
+  }
+
+  .characters img {
+    width: 64px;
+    height: 64px;
+  }
+
+  .suggestion-grid {
+    gap: 8px;
+  }
+
+  .suggest-card img {
+    height: 200px;
+  }
+
+  .scenes img {
+    flex-basis: 130px;
+    height: 90px;
+  }
+
+  .movie-footer {
+    padding: 32px 16px;
+  }
+}
+
+@media (max-width: 320px) {
+  .movie-nav {
+    padding: 14px 14px;
+  }
+
+  .movie-hero-content {
+    padding: 100px 14px 20px 14px;
+  }
+
+  .hero-left h1 {
+    font-size: 22px;
+  }
+
+  .jw-logo {
+    width: 130px;
+  }
+
+  .scenes {
+    padding: 0 14px 6px 14px;
+  }
+
+  .scenes img {
+    flex-basis: 120px;
+    height: 85px;
+  }
+
+  .about {
+    padding: 24px 14px 14px;
+  }
+
+  .characters {
+    gap: 8px;
+  }
+
+  .characters img {
+    width: 56px;
+    height: 56px;
+  }
+
+  .suggestion {
+    padding: 5px 14px;
+  }
+
+  .suggestion-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 8px;
+  }
+
+  .suggest-card img {
+    height: 180px;
+  }
+
+  .comments {
+    padding: 28px 14px;
+  }
+
+  .footer-links {
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .footer-socials {
+    gap: 10px;
+  }
+
+  .footer-socials a {
+    width: 38px;
+    height: 38px;
+  }
+
+  .footer-socials a i {
+    font-size: 16px;
+  }
 }

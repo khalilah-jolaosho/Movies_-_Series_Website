@@ -21,7 +21,10 @@
 
     <nav class="movie-nav">
       <img class="light-logo" src="assets/logo-light-1.svg" alt="Logo">
-      <div class="nav-bar">
+      <div class="nav-bar" id="navBar">
+        <button class="close-btn" id="closeBtn">
+          <i class="fa-solid fa-xmark"></i>
+        </button>
         <ul>
           <li><a href="index.html">Home</a></li>
           <li><a href="#">Pricing</a></li>
@@ -37,6 +40,9 @@
         <img src="assets/log-in-interaction.svg" alt="Login">
         <img src="assets/sun.svg" alt="Theme">
       </div>
+      <button class="hamburger" id="hamburger">
+        <i class="fa-solid fa-bars"></i>
+      </button>
     </nav>
 
     <div class="collection-hero-content">
@@ -58,7 +64,7 @@
     </div>
 
     <div class="films-poster">
-      <img src="assets/films-poster-2.svg">
+      <img src="assets/films-poster-2.svg" alt="Films poster">
     </div>
   </section>
 
@@ -72,41 +78,18 @@
             </div>
         </div>
 
-
-    <div class="collections-grid">
-      <!-- ROW 1 - COPY THIS CARD TO DUPLICATE -->
-      <div class="collection-card">
-        <a href="collection-single.html"><img src="assets/collection-animation-7.svg">
-      </div></a>
-      <div class="collection-card">
-        <a href="collection-single.html"><img src="assets/collection-animation-2.svg"></a>
-      </div>
-      <div class="collection-card">
-        <a href="collection-single.html"><img src="assets/collection-animation-3.svg"></a>
-      </div>
-      <div class="collection-card">
-        <a href="collection-single.html"><img src="assets/collection-animation-8.svg"></a>
-      </div>
-      <div class="collection-card">
-        <a href="collection-single.html"><img src="assets/collection-animation-9.svg"></a>
-      </div>
-
-      <div class="collection-card">
-        <a href="collection-single.html"><img src="assets/collection-animation-10.svg"></a>
-      </div>
-      <div class="collection-card">
-        <a href="collection-single.html"><img src="assets/collection-animation-1.svg">
-      </div></a>
-      <div class="collection-card">
-        <a href="collection-single.html"><img src="assets/collection-animation-11.svg">
-      </div></a>
-      <div class="collection-card">
-        <a href="collection-single.html"><img src="assets/collection-animation-4.svg"></a>
-      </div>
-      <div class="collection-card">
-        <a href="collection-single.html"><img src="assets/collection-animation-5.svg"></a>
-      </div>
-    </div>
+   <div class="collections-grid">
+  <div class="collection-card"><a href="collection-single.html?collection=batman"><img src="assets/collection-animation-7.svg" alt="Batman"></a></div>
+  <div class="collection-card"><a href="collection-single.html?collection=animation"><img src="assets/collection-animation-2.svg" alt="Animation"></a></div>
+  <div class="collection-card"><a href="collection-single.html?collection=action"><img src="assets/collection-animation-3.svg" alt="Action"></a></div>
+  <div class="collection-card"><a href="collection-single.html?collection=scifi"><img src="assets/collection-animation-8.svg" alt="Sci-Fi"></a></div>
+  <div class="collection-card"><a href="collection-single.html?collection=comedy"><img src="assets/collection-animation-9.svg" alt="Comedy"></a></div>
+  <div class="collection-card"><a href="collection-single.html?collection=drama"><img src="assets/collection-animation-10.svg" alt="Drama"></a></div>
+  <div class="collection-card"><a href="collection-single.html?collection=animation"><img src="assets/collection-animation-1.svg" alt="Animation 2"></a></div>
+  <div class="collection-card"><a href="collection-single.html?collection=action"><img src="assets/collection-animation-11.svg" alt="Action 2"></a></div>
+  <div class="collection-card"><a href="collection-single.html?collection=scifi"><img src="assets/collection-animation-4.svg" alt="Sci-Fi 2"></a></div>
+  <div class="collection-card"><a href="collection-single.html?collection=batman"><img src="assets/collection-animation-5.svg" alt="Batman 2"></a></div>
+</div>
   </section>
 
   <!-- FOOTER -->
@@ -132,5 +115,6 @@
     </div>
   </footer>
 
+  <script src="script.js"></script>
 </body>
 </html>

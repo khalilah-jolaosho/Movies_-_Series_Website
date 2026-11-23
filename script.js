@@ -1,17 +1,25 @@
-document.getElementById('go-to-series').addEventListener('click', () => {
-    
-  document.querySelectorAll('.toggle-btn').forEach(b => b.classList.remove('active'));
-  document.getElementById('go-to-series').classList.add('active');
 
-  document.getElementById('series-section').scrollIntoView({ behavior: 'smooth' });
-});
+const goToSeries = document.getElementById('go-to-series');
+if (goToSeries) {
+  goToSeries.addEventListener('click', () => {
+    document.querySelectorAll('.toggle-btn').forEach(b => b.classList.remove('active'));
+    goToSeries.classList.add('active');
 
-document.getElementById('go-to-movies').addEventListener('click', () => {
-  document.querySelectorAll('.toggle-btn').forEach(b => b.classList.remove('active'));
-  document.getElementById('go-to-movies').classList.add('active');
+    const section = document.getElementById('series-section');
+    if (section) section.scrollIntoView({ behavior: 'smooth' });
+  });
+}
 
-  document.getElementById('movies-section').scrollIntoView({ behavior: 'smooth' });
-});
+const goToMovies = document.getElementById('go-to-movies');
+if (goToMovies) {
+  goToMovies.addEventListener('click', () => {
+    document.querySelectorAll('.toggle-btn').forEach(b => b.classList.remove('active'));
+    goToMovies.classList.add('active');
+
+    const section = document.getElementById('movies-section');
+    if (section) section.scrollIntoView({ behavior: 'smooth' });
+  });
+}
 
 document.querySelectorAll('.faq-question').forEach(btn => {
   btn.addEventListener('click', () => {
@@ -26,20 +34,60 @@ document.querySelectorAll('.faq-question').forEach(btn => {
   });
 });
 
-  const hamburger = document.getElementById('hamburger');
-  const navBar = document.getElementById('navBar');
-  const closeBtn = document.getElementById('closeBtn');
+const hamburger = document.getElementById('hamburger');
+const navBar = document.getElementById('navBar');
+const closeBtn = document.getElementById('closeBtn');
 
+if (hamburger && navBar) {
   hamburger.addEventListener('click', () => {
     navBar.classList.add('active');
   });
+}
 
+if (closeBtn && navBar) {
   closeBtn.addEventListener('click', () => {
     navBar.classList.remove('active');
   });
+}
 
+if (navBar) {
   document.querySelectorAll('.nav-bar a').forEach(link => {
     link.addEventListener('click', () => {
       navBar.classList.remove('active');
     });
   });
+}
+
+document.addEventListener('DOMContentLoaded', () => {
+  const watchBtn = document.querySelector('.btn-watch');
+  
+  if (watchBtn) {
+    watchBtn.addEventListener('click', () => {
+      setTimeout(() => {
+        if (typeof movies !== 'undefined' && movies && movies.length > 0 && movies[0].url) {
+          window.open(movies[0].url, '_blank');
+        } else {
+          alert('Movies are still loading, please try again in 2 seconds');
+        }
+      }, 500);
+    });
+  }
+});
+
+document.querySelectorAll('.movies-filters .genre').forEach(button => {
+  button.addEventListener('click', () => {
+    document.querySelectorAll('.movies-filters .genre').forEach(b => b.classList.remove('active'));
+    button.classList.add('active');
+
+    let genre = button.textContent.trim();
+    if (genre === 'Sci-Fi') genre = 'SciFi';
+
+    document.querySelectorAll('.movies-grid .movie-card').forEach(card => {
+      if (card.dataset.category === genre) {
+        card.style.display = 'block';
+      } else {
+        card.style.display = 'none';
+      }
+    });
+  });
+});

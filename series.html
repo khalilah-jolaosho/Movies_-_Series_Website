@@ -18,12 +18,12 @@
                     <i class="fa-solid fa-xmark"></i>
                 </button>
                 <ul>
-                    <li><a href="#Home">Home</a></li>
-                    <li><a href="#price">Pricing</a></li>
-                    <li><a href="#movies-section">Movies</a></li>
-                    <li><a href="#series-section">Series</a></li>
-                    <li><a href="#collection">Collection</a></li>
-                    <li><a href="#faq">FAQ</a></li>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="index.html#price">Pricing</a></li>
+                    <li><a href="movies.html">Movies</a></li>
+                    <li><a href="series.html">Series</a></li>
+                    <li><a href="collection.html">Collection</a></li>
+                    <li><a href="index.html#faq">FAQ</a></li>
                 </ul>
             </div>
 
@@ -46,42 +46,47 @@
                 <i class="fa-solid fa-magnifying-glass"></i>
             </div>
 
-            <div class="movies">
-                <div class="movies-grid">
-                    <img src="assets/series-7.svg" alt="">
-                    <img src="assets/series-1.svg" alt="">
-                    <img src="assets/series-3.svg" alt="">
-                    <img src="assets/series-4.svg" alt="">
-                    <img src="assets/series-6.svg" alt="">
-                    <img src="assets/series-2.svg" alt="">
-                    <img src="assets/series-8.svg" alt="">
-                    <img src="assets/series-5.svg" alt="">
-                    <img src="assets/series-9.svg" alt="">
-                    <img src="assets/series-10.svg" alt="">
-                </div>
-
-            </div>
+        <div class="movies">
+        <div class="movies-grid" id="seriesGrid">
+        </div>
+        </div>
         </section>
 
+        <script src="movie_db.js"></script>
+        <script src="script.js"></script>
         <script>
-            const hamburger = document.getElementById('hamburger');
-            const navBar = document.getElementById('navBar');
-            const closeBtn = document.getElementById('closeBtn');
+            document.addEventListener('dataReady', () => {
+                const grid = document.getElementById('seriesGrid');
 
-            hamburger.addEventListener('click', () => {
-                navBar.classList.add('active');
-            });
+                const localCovers = [
+                    'assets/series-1.svg',
+                    'assets/series-2.svg',
+                    'assets/series-3.svg',
+                    'assets/series-4.svg',
+                    'assets/series-5.svg',
+                    'assets/series-6.svg',
+                    'assets/series-7.svg',
+                    'assets/series-8.svg',
+                    'assets/series-9.svg',
+                    'assets/series-10.svg'
+                ];
 
-            closeBtn.addEventListener('click', () => {
-                navBar.classList.remove('active');
-            });
+                function renderSeries(filterText = '') {
+                    const q = filterText.toLowerCase();
+                    grid.innerHTML = series.map((s, i) => {
+                        if(q && !s.title.toLowerCase().includes(q)) return '';
+                        const img = localCovers[i] || s.cover;
+                        return `<a href="movie-selected.html?movie=${i}&type=series" class="movie-card"><img src="${img}" alt="${s.title}"></a>`;
+                    }).join('');
+                }
 
-            document.querySelectorAll('.nav-bar a').forEach(link => {
-                link.addEventListener('click', () => {
-                navBar.classList.remove('active');
+                renderSeries();
+
+                const input = document.querySelector('.search-bar input');
+                input.addEventListener('input', () => {
+                    renderSeries(input.value);
                 });
             });
-        </script>
-</body>
+            </script>
+    </body>
 </html>
-

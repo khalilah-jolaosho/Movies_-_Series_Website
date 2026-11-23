@@ -18,12 +18,12 @@
                     <i class="fa-solid fa-xmark"></i>
                 </button>
                 <ul>
-                    <li><a href="#Home">Home</a></li>
-                    <li><a href="#Pricing">Pricing</a></li>
-                    <li><a href="#Movies">Movies</a></li>
-                    <li><a href="#Series">Series</a></li>
-                    <li><a href="#Collection">Collection</a></li>
-                    <li><a href="#FAQ">FAQ</a></li>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="index.html#price">Pricing</a></li>
+                    <li><a href="movies.html">Movies</a></li>
+                    <li><a href="series.html">Series</a></li>
+                    <li><a href="collection.html">Collection</a></li>
+                    <li><a href="index.html#faq">FAQ</a></li>
                 </ul>
             </div>
 
@@ -46,47 +46,54 @@
                 <i class="fa-solid fa-magnifying-glass"></i>
             </div>
 
+            <!-- ADD THE GENRE BUTTONS HERE - this was missing -->
+            <div class="movies-filters">
+                <button class="genre">Drama</button>
+                <button class="genre">Action</button>
+                <button class="genre">Adventure</button>
+                <button class="genre">Romance</button>
+                <button class="genre">Fantasy</button>
+                <button class="genre">Comedy</button>
+                <button class="genre">Animation</button>
+                <button class="genre">Thriller</button>
+                <button class="genre">Mystery</button>
+                <button class="genre">Sci-Fi</button>
+            </div>
+
             <div class="movies">
                 <div class="movies-grid">
-                    <a href="movie-selected.html"><img src="assets/movie-1.svg" alt=""></a>
-                    <a href="movie-selected.html"><img src="assets/movie-2.svg" alt=""></a>
-                    <a href="movie-selected.html"><img src="assets/movie-7.svg" alt=""></a>
-                    <a href="movie-selected.html"><img src="assets/movie-3.svg" alt=""></a>
-                    <a href="movie-selected.html"><img src="assets/movie-5.svg" alt=""></a>
-                    <a href="movie-selected.html"><img src="assets/movie-8.svg" alt=""></a>
-                    <a href="movie-selected.html"><img src="assets/trends-1.svg" alt=""></a>
-                    <a href="movie-selected.html"><img src="assets/trends-5.svg" alt=""></a>
-                    <a href="movie-selected.html"><img src="assets/trends-4.svg" alt=""></a>
-                    <a href="movie-selected.html"><img src="assets/trends-2.svg" alt=""></a>
-                    <a href="movie-selected.html"><img src="assets/trends-3.svg" alt=""></a>
-                    <a href="movie-selected.html"><img src="assets/trends-6.svg" alt=""></a>
-                   <a href="movie-selected.html"><img src="assets/trends-7.svg" alt=""></a> 
-                    <a href="movie-selected.html"><img src="assets/trends-8.svg" alt=""></a>
-                    <a href="movie-selected.html"><img src="assets/trends-9.svg" alt=""></a>
+                    <!-- I added data-category to each one for you -->
+                    <a href="movie-selected.html?movie=0" class="movie-card" data-category="Action"><img src="assets/movie-1.svg" alt="John Wick Chapter 4"></a>
+                    <a href="movie-selected.html?movie=1" class="movie-card" data-category="SciFi"><img src="assets/movie-2.svg" alt="Dune Part Two"></a>
+                    <a href="movie-selected.html?movie=2" class="movie-card" data-category="Drama"><img src="assets/movie-7.svg" alt="Oppenheimer"></a>
+                    <a href="movie-selected.html?movie=3" class="movie-card" data-category="Comedy"><img src="assets/movie-3.svg" alt="Barbie"></a>
+                    <a href="movie-selected.html?movie=4" class="movie-card" data-category="Animation"><img src="assets/movie-5.svg" alt="Spider-Man Across the Spider-Verse"></a>
+                    <a href="movie-selected.html?movie=5" class="movie-card" data-category="Action"><img src="assets/movie-8.svg" alt="The Batman"></a>
+                    <a href="movie-selected.html?movie=6" class="movie-card" data-category="SciFi"><img src="assets/trends-1.svg" alt="Interstellar"></a>
+                    <a href="movie-selected.html?movie=7" class="movie-card" data-category="SciFi"><img src="assets/trends-5.svg" alt="Inception"></a>
+                    <a href="movie-selected.html?movie=8" class="movie-card" data-category="Action"><img src="assets/trends-4.svg" alt="Avengers Endgame"></a>
+                    <a href="movie-selected.html?movie=9" class="movie-card" data-category="Animation"><img src="assets/trends-2.svg" alt="Coco"></a>
+                    <a href="movie-selected.html?movie=10" class="movie-card" data-category="Animation"><img src="assets/trends-3.svg" alt="Inside Out 2"></a>
+                    <a href="movie-selected.html?movie=11" class="movie-card" data-category="Action"><img src="assets/trends-6.svg" alt="The Dark Knight"></a>
+                    <a href="movie-selected.html?movie=12" class="movie-card" data-category="Romance"><img src="assets/trends-7.svg" alt="Titanic"></a>
+                    <a href="movie-selected.html?movie=13" class="movie-card" data-category="Thriller"><img src="assets/trends-8.svg" alt="Parasite"></a>
+                    <a href="movie-selected.html?movie=14" class="movie-card" data-category="Action"><img src="assets/trends-9.svg" alt="Everything Everywhere All at Once"></a>
                 </div>
-
             </div>
         </section>
 
+        <script src="script.js"></script>
+        <script src="movie_db.js"></script>
         <script>
-            const hamburger = document.getElementById('hamburger');
-            const navBar = document.getElementById('navBar');
-            const closeBtn = document.getElementById('closeBtn');
-
-            hamburger.addEventListener('click', () => {
-                navBar.classList.add('active');
-            });
-
-            closeBtn.addEventListener('click', () => {
-                navBar.classList.remove('active');
-            });
-
-            document.querySelectorAll('.nav-bar a').forEach(link => {
-                link.addEventListener('click', () => {
-                navBar.classList.remove('active');
-                });
-            });
+        document.addEventListener('dataReady', () => {
+            const filter = new URLSearchParams(location.search).get('filter');
+            if(!filter) return;
+            const list = filter === 'trending' ? trending : kids;
+            document.querySelector('h2').textContent = filter === 'trending' ? 'Trending' : 'Kids';
+            document.querySelector('.movies-grid').innerHTML = list.map((m,i)=>`
+            <a href="movie-selected.html?movie=${i}&type=${filter}" class="movie-card"><img src="${m.cover}" alt="${m.title}"></a>
+            `).join('');
+        });
         </script>
 </body>
 </html>
-
