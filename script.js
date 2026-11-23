@@ -91,3 +91,27 @@ document.querySelectorAll('.movies-filters .genre').forEach(button => {
     });
   });
 });
+
+
+const themeToggle = document.getElementById('themeToggle');
+const themeIcon = document.getElementById('themeIcon');
+
+function setTheme(mode) {
+  if (mode === 'light') {
+    document.body.classList.add('light-mode');
+    themeIcon.className = 'fa-solid fa-moon';
+    localStorage.setItem('theme', 'light');
+  } else {
+    document.body.classList.remove('light-mode');
+    themeIcon.className = 'fa-solid fa-sun';
+    localStorage.setItem('theme', 'dark');
+  }
+}
+
+if (themeToggle) {
+  themeToggle.addEventListener('click', () => {
+    const isLight = document.body.classList.contains('light-mode');
+    setTheme(isLight ? 'dark' : 'light');
+  });
+  if (localStorage.getItem('theme') === 'light') setTheme('light');
+}
