@@ -30,8 +30,40 @@
             <div class="hero-logos">
                 <img src="assets/search-interaction.svg" alt="">
                 <img src="assets/bell-notif.svg" alt="">
-                <img src="assets/log-in-interaction.svg" alt="">
-                <img src="assets/sun.svg" alt="">
+
+                <!-- PROFILE DROPDOWN - SAME FORMAT AS INDEX / MOVIES, NO SETTINGS -->
+                <div class="profile-wrapper">
+                    <img id="navAvatar" src="assets/profile-1.svg" alt="profile" class="nav-avatar">
+                    <i class="fa-solid fa-caret-down profile-caret"></i>
+
+                    <div id="profileDropdown" class="profile-dropdown hidden">
+                        <div class="dropdown-header">
+                            <img id="dropdownAvatar" src="assets/profile-1.svg" alt="Profile">
+                            <div>
+                                <p id="dropdownName">My Profile</p>
+                                <span>Manage your account</span>
+                            </div>
+                        </div>
+
+                        <button id="changePicBtn" class="dropdown-item" type="button">
+                            <i class="fa-solid fa-camera"></i> Change Profile Picture
+                        </button>
+                        <input type="file" id="profilePicInput" accept="image/*" hidden>
+
+                        <button id="myProfileBtn" class="dropdown-item" type="button">
+                            <i class="fa-solid fa-user"></i> My Profile
+                        </button>
+
+                        <hr>
+                        <button id="logoutBtn" class="dropdown-item logout" type="button">
+                            <i class="fa-solid fa-right-from-bracket"></i> Log Out
+                        </button>
+                    </div>
+                </div>
+
+                <button id="themeToggle" style="background:none; border:none; cursor:pointer; font-size:20px; color:white;">
+                    <i id="themeIcon" class="fa-solid fa-sun"></i>
+                </button>
             </div>
 
             <button class="hamburger" id="hamburger">
@@ -88,5 +120,20 @@
                 });
             });
             </script>
+        <script>
+          const savedSeries = JSON.parse(localStorage.getItem('movieUser') || 'null');
+          if (savedSeries) {
+            const navAvatar = document.getElementById('navAvatar');
+            const dropdownAvatar = document.getElementById('dropdownAvatar');
+            const dropdownName = document.getElementById('dropdownName');
+            const pic = savedSeries.avatar || localStorage.getItem('userProfilePic');
+            if (pic) {
+              if (navAvatar) navAvatar.src = pic;
+              if (dropdownAvatar) dropdownAvatar.src = pic;
+            }
+            if (savedSeries.name && dropdownName) dropdownName.textContent = savedSeries.name;
+            if (savedSeries.email && dropdownName && !savedSeries.name) dropdownName.textContent = savedSeries.email;
+          }
+        </script>
     </body>
 </html>

@@ -10,6 +10,9 @@ const movieIds = [
 ];
 
 let movies = [];
+let series = [];
+let kids = [];
+let trending = [];
 
 const getImage = (path, size = 'w500', name = 'Movie') => {
     return path
@@ -18,74 +21,74 @@ const getImage = (path, size = 'w500', name = 'Movie') => {
 };
 
 const getCategory = (genres = []) => {
-    const categories = ['Drama','Action','Adventure','Romance','Fantasy','Comedy','Animation','Thriller','Mystery','SciFi'];
+    const categories = ['Drama', 'Action', 'Adventure', 'Romance', 'Fantasy', 'Comedy', 'Animation', 'Thriller', 'Mystery', 'SciFi'];
     const genreMap = {
-        Action:'Action', Adventure:'Adventure', Animation:'Animation', Comedy:'Comedy',
-        Crime:'Thriller', Documentary:'Drama', Drama:'Drama', Family:'Fantasy',
-        Fantasy:'Fantasy', History:'Drama', Horror:'Thriller', Music:'Drama',
-        Mystery:'Mystery', Romance:'Romance', ScienceFiction:'SciFi',
-        Thriller:'Thriller', War:'Action', Western:'Adventure'
+        Action: 'Action', Adventure: 'Adventure', Animation: 'Animation', Comedy: 'Comedy',
+        Crime: 'Thriller', Documentary: 'Drama', Drama: 'Drama', Family: 'Fantasy',
+        Fantasy: 'Fantasy', History: 'Drama', Horror: 'Thriller', Music: 'Drama',
+        Mystery: 'Mystery', Romance: 'Romance', ScienceFiction: 'SciFi',
+        Thriller: 'Thriller', War: 'Action', Western: 'Adventure'
     };
-    return genres.map(g => genreMap[g.name.replace(/\s/g,'')]).find(c => categories.includes(c)) || 'Drama';
+    return genres.map(g => genreMap[g.name.replace(/\s/g, '')]).find(c => categories.includes(c)) || 'Drama';
 };
 
-// Helper
 const fetchTMDB = async (endpoint) => {
-    const res = await fetch(`https://api.themoviedb.org/3/${endpoint}`, {
-        headers: { Authorization: `Bearer ${TMDB_TOKEN}`, accept: 'application/json' }
-    });
-    if (!res.ok) return null;
-    return res.json();
+    try {
+        const res = await fetch(`https://api.themoviedb.org/3/${endpoint}`, {
+            headers: { Authorization: `Bearer ${TMDB_TOKEN}`, accept: 'application/json' }
+        });
+        if (!res.ok) return null;
+        return res.json();
+    } catch (e) {
+        return null;
+    }
 };
 
-const fetchMovie = async (id) => {
-    return fetchTMDB(`movie/${id}?language=en-US`);
-};
+const fetchMovie = (id) => fetchTMDB(`movie/${id}?language=en-US`);
 
-const fetchMovieDetails = async (id) => {
-    return fetchTMDB(`movie/${id}?append_to_response=credits,videos&language=en-US`);
-};
+const fetchMovieDetails = (id) => fetchTMDB(`movie/${id}?append_to_response=credits,videos&language=en-US`);
 
 const populateMovies = async () => {
-    const results = [];
-    for (let i = 0; i < movieIds.length; i += 5) {
-        const batch = movieIds.slice(i, i + 5);
-        const batchResults = await Promise.all(batch.map(fetchMovie));
-        results.push(...batchResults.filter(Boolean));
-    }
+    const results = await Promise.all(movieIds.map(fetchMovie));
+    const clean = results.filter(Boolean);
 
-    movies = results.map((movie, index) => ({
-        title: movie.title,
-        description: movie.overview,
-        cover: getImage(movie.poster_path, 'w500', movie.title),
-        type: 'movie',
-        category: getCategory(movie.genres),
-        thumbnails: getImage(movie.backdrop_path, 'w780', movie.title),
-        url: `https://www.youtube.com/results?search_query=${encodeURIComponent(movie.title + ' official trailer')}`,
-        genre: movie.genres.map(g => g.name).join(', '),
-        rating: Math.round((movie.vote_average || 0) / 2 * 10) / 10,
-        director: { name: 'Unknown Director', photo: getImage(null, 'w185', 'Director') },
-        comments: [{ name: 'Movie Lover', photo: 'https://ui-avatars.com/api/?name=Movie+Lover', comment: `I really enjoyed watching ${movie.title}. Great movie!`, likes: 3, dislikes: 0 }],
-        characters: [],
-        related_movies: [],
-        _id: movie.id,
-        _needsDetails: true
-    }));
-
+    movies = clean.map((movie, index) => {
+        return {
+            title: movie.title,
+            description: movie.overview,
+            cover: getImage(movie.poster_path, 'w500', movie.title),
+            type: 'movie',
+            category: getCategory(movie.genres),
+            thumbnails: getImage(movie.backdrop_path, 'w780', movie.title),
+            url: `https://www.youtube.com/results?search_query=${encodeURIComponent(movie.title + ' official trailer')}`,
+            genre: movie.genres.map(g => g.name).join(', '),
+            rating: Math.round((movie.vote_average || 0) / 2 * 10) / 10,
+            director: { name: 'Unknown Director', photo: getImage(null, 'w185', 'Director') },
+            comments: [{ name: 'Movie Lover', photo: 'https://ui-avatars.com/api/?name=Movie+Lover', comment: `I really enjoyed watching ${movie.title}. Great movie!`, likes: 3, dislikes: 0 }],
+            characters: [],
+            related_movies: clean
+                .filter((_, i) => i !== index)
+                .slice(0, 3)
+                .map(r => ({
+                    name: r.title,
+                    url: `https://www.youtube.com/results?search_query=${encodeURIComponent(r.title + ' official trailer')}`,
+                    photo: getImage(r.poster_path, 'w500', r.title)
+                })),
+            _id: movie.id
+        };
+    });
     return movies;
 };
-
-let series = [];
-let kids = [];
-let trending = [];
 
 const seriesIds = [1399, 1396, 94605, 95557, 1622, 1668, 8521, 93405, 114472, 65334];
 const kidsIds = [354912, 1022789, 8587, 502356, 129, 10681];
 
 const populateExtra = async () => {
-    const tvResults = await Promise.all(seriesIds.map(id => 
-        fetchTMDB(`tv/${id}?language=en-US`)
-    ));
+    const [tvResults, kResults, tJson] = await Promise.all([
+        Promise.all(seriesIds.map(id => fetchTMDB(`tv/${id}?language=en-US`))),
+        Promise.all(kidsIds.map(fetchMovie)),
+        fetchTMDB(`trending/all/week?language=en-US`)
+    ]);
 
     series = tvResults.filter(Boolean).map(s => ({
         title: s.name,
@@ -94,13 +97,12 @@ const populateExtra = async () => {
         thumbnails: getImage(s.backdrop_path, 'w780', s.name),
         type: 'series',
         category: getCategory(s.genres),
-        genre: s.genres?.map(g=>g.name).join(', '),
-        rating: Math.round((s.vote_average||0)/2*10)/10,
-        year: (s.first_air_date||'').slice(0,4),
+        genre: s.genres?.map(g => g.name).join(', '),
+        rating: Math.round((s.vote_average || 0) / 2 * 10) / 10,
+        year: (s.first_air_date || '').slice(0, 4),
         url: `https://www.youtube.com/results?search_query=${encodeURIComponent(s.name + ' official trailer')}`
     }));
 
-    const kResults = await Promise.all(kidsIds.map(id => fetchMovie(id)));
     kids = kResults.filter(Boolean).map(m => ({
         title: m.title,
         description: m.overview,
@@ -108,22 +110,22 @@ const populateExtra = async () => {
         thumbnails: getImage(m.backdrop_path, 'w780', m.title),
         type: 'kids',
         category: getCategory(m.genres),
-        genre: m.genres.map(g=>g.name).join(', '),
-        rating: Math.round((m.vote_average||0)/2*10)/10,
-        year: (m.release_date||'').slice(0,4),
+        genre: m.genres.map(g => g.name).join(', '),
+        rating: Math.round((m.vote_average || 0) / 2 * 10) / 10,
+        year: (m.release_date || '').slice(0, 4),
         url: `https://www.youtube.com/results?search_query=${encodeURIComponent(m.title + ' official trailer')}`
     }));
 
-    const tJson = await fetchTMDB(`trending/all/week?language=en-US`);
-    trending = (tJson?.results || []).slice(0,12).map(t => ({
+    trending = (tJson?.results || []).slice(0, 12).map(t => ({
         title: t.title || t.name,
         description: t.overview,
-        cover: getImage(t.poster_path, 'w500', t.title||t.name),
+        cover: getImage(t.poster_path, 'w500', t.title || t.name),
+        thumbnails: getImage(t.backdrop_path, 'w780', t.title || t.name),
         type: 'trending',
         category: 'Trending',
-        rating: Math.round((t.vote_average||0)/2*10)/10,
-        year: (t.release_date||t.first_air_date||'').slice(0,4),
-        url: `https://www.youtube.com/results?search_query=${encodeURIComponent((t.title||t.name) + ' official trailer')}`
+        rating: Math.round((t.vote_average || 0) / 2 * 10) / 10,
+        year: (t.release_date || t.first_air_date || '').slice(0, 4),
+        url: `https://www.youtube.com/results?search_query=${encodeURIComponent((t.title || t.name) + ' official trailer')}`
     }));
 
     document.querySelectorAll('img').forEach((img, i) => {
@@ -134,4 +136,4 @@ const populateExtra = async () => {
     document.dispatchEvent(new Event('dataReady'));
 };
 
-populateMovies().then(() => populateExtra()).catch(console.error);
+Promise.all([populateMovies(), populateExtra()]).catch(console.error);

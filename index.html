@@ -26,8 +26,8 @@
 <body>
     <!-- Hero Section -->
     <section class="hero-section" id="Home">
-        <img src="assets/witcher-banner.svg" class="bg-img">
-        <img src="assets/gradient-1.svg" class="gradient">
+        <img src="assets/witcher-banner.svg" class="bg-img" loading="lazy">
+        <img src="assets/gradient-1.svg" class="gradient" loading="lazy">
         
         <nav>
             <img class="light-logo" src="assets/logo-light-1.svg">
@@ -48,7 +48,37 @@
             <div class="hero-logos">
                 <img src="assets/search-interaction.svg" alt="">
                 <img src="assets/bell-notif.svg" alt="">
-                <img id="navAvatar" src="assets/profile-1.svg" alt="profile" style="width:36px; height:36px; border-radius:50%; object-fit:cover; cursor:pointer;" onclick="location.href='login.html'">
+                
+                <!-- PROFILE DROPDOWN -->
+                <div class="profile-wrapper">
+                    <img id="navAvatar" src="assets/profile-1.svg" alt="profile" class="nav-avatar">
+                    <i class="fa-solid fa-caret-down profile-caret"></i>
+
+                    <div id="profileDropdown" class="profile-dropdown hidden">
+                        <div class="dropdown-header">
+                            <img id="dropdownAvatar" src="assets/profile-1.svg" alt="Profile">
+                            <div>
+                                <p id="dropdownName">My Profile</p>
+                                <span>Manage your account</span>
+                            </div>
+                        </div>
+
+                        <button id="changePicBtn" class="dropdown-item" type="button">
+                            <i class="fa-solid fa-camera"></i> Change Profile Picture
+                        </button>
+                        <input type="file" id="profilePicInput" accept="image/*" hidden>
+
+                        <button id="myProfileBtn" class="dropdown-item" type="button">
+                            <i class="fa-solid fa-user"></i> My Profile
+                        </button>
+
+                        <hr>
+                        <button id="logoutBtn" class="dropdown-item logout" type="button">
+                            <i class="fa-solid fa-right-from-bracket"></i> Log Out
+                        </button>
+                    </div>
+                </div>
+
                 <button id="themeToggle" style="background:none; border:none; cursor:pointer; font-size:20px; color:white;">
                     <i id="themeIcon" class="fa-solid fa-sun"></i>
                 </button>
@@ -89,22 +119,22 @@
 
         <div class="trends-grid">
             <div class="trend-card">
-                <a href="movie-selected.html?movie=0&type=trending"><img src="assets/trends-1.svg"></a>
+                <a href="movie-selected.html?movie=0&type=trending"><img src="assets/trends-1.svg" loading="lazy"></a>
             </div>
             <div class="trend-card">
-                <a href="movie-selected.html?movie=1&type=trending"><img src="assets/trends-2.svg"></a>
+                <a href="movie-selected.html?movie=1&type=trending"><img src="assets/trends-2.svg" loading="lazy"></a>
             </div>
             <div class="trend-card">
-                <a href="movie-selected.html?movie=2&type=trending"><img src="assets/trends-3.svg"></a>
+                <a href="movie-selected.html?movie=2&type=trending"><img src="assets/trends-3.svg" loading="lazy"></a>
             </div>
             <div class="trend-card">
-                <a href="movie-selected.html?movie=3&type=trending"><img src="assets/trends-4.svg"></a>
+                <a href="movie-selected.html?movie=3&type=trending"><img src="assets/trends-4.svg" loading="lazy"></a>
             </div>
             <div class="trend-card">
-                <a href="movie-selected.html?movie=4&type=trending"><img src="assets/trends-5.svg"></a>
+                <a href="movie-selected.html?movie=4&type=trending"><img src="assets/trends-5.svg" loading="lazy"></a>
             </div>
             <div class="trend-card">
-                <a href="movie-selected.html?movie=5&type=trending"><img src="assets/trends-6.svg"></a>
+                <a href="movie-selected.html?movie=5&type=trending"><img src="assets/trends-6.svg" loading="lazy"></a>
             </div>
         </div>
     </section>
@@ -133,22 +163,22 @@
 
         <div class="movies-grid">
             <div class="movie-card" data-category="Drama">
-               <a href="movie-selected.html?movie=0&type=movie"><img src="assets/movie-1.svg"></a> 
+               <a href="movie-selected.html?movie=0&type=movie"><img src="assets/movie-1.svg" loading="lazy"></a> 
             </div>
             <div class="movie-card" data-category="SciFi">
-                <a href="movie-selected.html?movie=1&type=movie"><img src="assets/movie-2.svg"></a>
+                <a href="movie-selected.html?movie=1&type=movie"><img src="assets/movie-2.svg" loading="lazy"></a>
             </div>
             <div class="movie-card" data-category="Action">
-                <a href="movie-selected.html?movie=2&type=movie"><img src="assets/movie-3.svg"></a>
+                <a href="movie-selected.html?movie=2&type=movie"><img src="assets/movie-3.svg" loading="lazy"></a>
             </div>
             <div class="movie-card" data-category="Action">
-                <a href="movie-selected.html?movie=3&type=movie"><img src="assets/movie-4.svg"></a>
+                <a href="movie-selected.html?movie=3&type=movie"><img src="assets/movie-4.svg" loading="lazy"></a>
             </div>
             <div class="movie-card" data-category="Thriller">
-                <a href="movie-selected.html?movie=4&type=movie"><img src="assets/movie-5.svg"></a>
+                <a href="movie-selected.html?movie=4&type=movie"><img src="assets/movie-5.svg" loading="lazy"></a>
             </div>
             <div class="movie-card" data-category="Action">
-                <a href="movie-selected.html?movie=5&type=movie"><img src="assets/movie-6.svg"></a>
+                <a href="movie-selected.html?movie=5&type=movie"><img src="assets/movie-6.svg" loading="lazy"></a>
             </div>
         </div>
     </section>
@@ -157,11 +187,11 @@
     <section class="golden-globe">
         <div class="golden-bg-blur"></div>
         <div class="golden-left">
-            <img src="assets/img-200.svg" alt="Golden Globe Awards" class="globe-icon">
+            <img src="assets/img-200.svg" alt="Golden Globe Awards" class="globe-icon" loading="lazy">
             <div class="left-blur"></div>
         </div>
         <div class="golden-right">
-            <img src="assets/img-201.svg" alt="Golden Globe Movies" class="golden-poster">
+            <img src="assets/img-201.svg" alt="Golden Globe Movies" class="golden-poster" loading="lazy">
         </div>
         <div class="golden-banner">
             <p>Watching Golden Globe 2024 Movies</p>
@@ -192,22 +222,22 @@
 
         <div class="series-grid">
             <div class="series-card">
-                <a href="movie-selected.html?movie=0&type=series"><img src="assets/series-1.svg"></a>
+                <a href="movie-selected.html?movie=0&type=series"><img src="assets/series-1.svg" loading="lazy"></a>
             </div>
             <div class="series-card">
-                <a href="movie-selected.html?movie=1&type=series"><img src="assets/series-2.svg"></a>
+                <a href="movie-selected.html?movie=1&type=series"><img src="assets/series-2.svg" loading="lazy"></a>
             </div>
             <div class="series-card">
-                <a href="movie-selected.html?movie=2&type=series"><img src="assets/series-3.svg"></a>
+                <a href="movie-selected.html?movie=2&type=series"><img src="assets/series-3.svg" loading="lazy"></a>
             </div>
             <div class="series-card">
-                <a href="movie-selected.html?movie=3&type=series"><img src="assets/series-4.svg"></a>
+                <a href="movie-selected.html?movie=3&type=series"><img src="assets/series-4.svg" loading="lazy"></a>
             </div>
             <div class="series-card">
-                <a href="movie-selected.html?movie=4&type=series"><img src="assets/series-5.svg"></a>
+                <a href="movie-selected.html?movie=4&type=series"><img src="assets/series-5.svg" loading="lazy"></a>
             </div>
             <div class="series-card">
-                <a href="movie-selected.html?movie=5&type=series"><img src="assets/series-6.svg"></a>
+                <a href="movie-selected.html?movie=5&type=series"><img src="assets/series-6.svg" loading="lazy"></a>
             </div>
         </div>
     </section>
@@ -216,13 +246,13 @@
     <section class="price" id="price">
         <div class="price-cards">
             <div class="basic">
-                <a href="#"><img src="assets/price_basic.svg"></a> 
+                <a href="#"><img src="assets/price_basic.svg" loading="lazy"></a> 
             </div>
             <div class="suggested">
-                <a href="#"><img src="assets/price_suggested.svg"></a>
+                <a href="#"><img src="assets/price_suggested.svg" loading="lazy"></a>
             </div>
             <div class="basic">
-                <a href="#"><img src="assets/price_premium.svg"></a>
+                <a href="#"><img src="assets/price_premium.svg" loading="lazy"></a>
             </div>  
         </div>
     </section>
@@ -239,22 +269,22 @@
 
         <div class="collection-row" id="collection-row">
             <div class="collection-card">
-                <a href="collection.html"><img src="assets/collection-animation-1.svg"></a>
+                <a href="collection.html"><img src="assets/collection-animation-1.svg" loading="lazy"></a>
             </div>
             <div class="collection-card">
-                <a href="collection.html"><img src="assets/collection-animation-2.svg"></a>
+                <a href="collection.html"><img src="assets/collection-animation-2.svg" loading="lazy"></a>
             </div>
             <div class="collection-card">
-                <a href="collection.html"><img src="assets/collection-animation-3.svg"></a>
+                <a href="collection.html"><img src="assets/collection-animation-3.svg" loading="lazy"></a>
             </div>
             <div class="collection-card">
-                <a href="collection.html"><img src="assets/collection-animation-4.svg"></a>
+                <a href="collection.html"><img src="assets/collection-animation-4.svg" loading="lazy"></a>
             </div>
             <div class="collection-card">
-                <a href="collection.html"><img src="assets/collection-animation-5.svg"></a>
+                <a href="collection.html"><img src="assets/collection-animation-5.svg" loading="lazy"></a>
             </div>
             <div class="collection-card">
-                <a href="collection.html"><img src="assets/collection-animation-6.svg"></a>
+                <a href="collection.html"><img src="assets/collection-animation-6.svg" loading="lazy"></a>
             </div>
         </div>
     </section> 
@@ -267,9 +297,9 @@
         </div>
 
         <div class="continue-cards">
-            <img src="assets/continue-play-1.svg">
-            <img class="kungfu" src="assets/continue-play-2.svg">
-            <img class="killers" src="assets/continue-play-3.svg">
+            <img src="assets/continue-play-1.svg" loading="lazy">
+            <img class="kungfu" src="assets/continue-play-2.svg" loading="lazy">
+            <img class="killers" src="assets/continue-play-3.svg" loading="lazy">
         </div>
     </section>
 
@@ -277,13 +307,13 @@
     <section class="characters">
         <h2>Characters</h2>
         <div class="character-cards">
-            <img src="assets/character-1.svg" alt="">
-            <img src="assets/character-2.svg" alt="">
-            <img src="assets/character-3.svg" alt="">
-            <img src="assets/character-4.svg" alt="">
-            <img src="assets/character-5.svg" alt="">
-            <img src="assets/character-6.svg" alt="">
-            <img class="display" src="assets/character-7.svg" alt="">
+            <img src="assets/character-1.svg" alt="" loading="lazy">
+            <img src="assets/character-2.svg" alt="" loading="lazy">
+            <img src="assets/character-3.svg" alt="" loading="lazy">
+            <img src="assets/character-4.svg" alt="" loading="lazy">
+            <img src="assets/character-5.svg" alt="" loading="lazy">
+            <img src="assets/character-6.svg" alt="" loading="lazy">
+            <img class="display" src="assets/character-7.svg" alt="" loading="lazy">
         </div>
     </section>
 
@@ -293,9 +323,9 @@
         <p>Create kids profile, set parental control, and choose rating levels. Easily find new <br>favvrites by sorting by characters and using age filters.</p>
 
         <div class="kids-cards">
-            <img class="sing" src="assets/sing.svg" alt="" onclick="location.href='movie-selected.html?movie=0&type=kids'" style="cursor:pointer">
-            <img class="panda" src="assets/panda.svg" alt="" onclick="location.href='movie-selected.html?movie=1&type=kids'" style="cursor:pointer">
-            <img class="raya" src="assets/raya.svg" alt="" onclick="location.href='movie-selected.html?movie=2&type=kids'" style="cursor:pointer">
+            <img class="sing" src="assets/sing.svg" alt="" onclick="location.href='movie-selected.html?movie=0&type=kids'" style="cursor:pointer" loading="lazy">
+            <img class="panda" src="assets/panda.svg" alt="" onclick="location.href='movie-selected.html?movie=1&type=kids'" style="cursor:pointer" loading="lazy">
+            <img class="raya" src="assets/raya.svg" alt="" onclick="location.href='movie-selected.html?movie=2&type=kids'" style="cursor:pointer" loading="lazy">
         </div>
     </section>
 
@@ -350,16 +380,16 @@
     <section class="studios">
         <h2>Studios</h2>
         <div class="studios-grid">
-            <div class="studio-card"><img src="assets/brand-1.svg" alt="HBO"></div>
-            <div class="studio-card"><img src="assets/brand-2.svg" alt="Warner Bros"></div>
-            <div class="studio-card"><img src="assets/brand-3.svg" alt="Disney+"></div>
-            <div class="studio-card"><img src="assets/brand-4.svg" alt="Marvel"></div>
-            <div class="studio-card"><img src="assets/brand-5.svg" alt="DC"></div>
-            <div class="studio-card"><img src="assets/brand-6.svg" alt="AMC"></div>
-            <div class="studio-card"><img src="assets/brand-7.svg" alt="Paramount"></div>
-            <div class="studio-card"><img src="assets/brand-8.svg" alt="Netflix"></div>
-            <div class="studio-card"><img src="assets/brand-9.svg" alt="Pixar"></div>
-            <div class="studio-card"><img src="assets/brand-10.svg"></div>
+            <div class="studio-card"><img src="assets/brand-1.svg" alt="HBO" loading="lazy"></div>
+            <div class="studio-card"><img src="assets/brand-2.svg" alt="Warner Bros" loading="lazy"></div>
+            <div class="studio-card"><img src="assets/brand-3.svg" alt="Disney+" loading="lazy"></div>
+            <div class="studio-card"><img src="assets/brand-4.svg" alt="Marvel" loading="lazy"></div>
+            <div class="studio-card"><img src="assets/brand-5.svg" alt="DC" loading="lazy"></div>
+            <div class="studio-card"><img src="assets/brand-6.svg" alt="AMC" loading="lazy"></div>
+            <div class="studio-card"><img src="assets/brand-7.svg" alt="Paramount" loading="lazy"></div>
+            <div class="studio-card"><img src="assets/brand-8.svg" alt="Netflix" loading="lazy"></div>
+            <div class="studio-card"><img src="assets/brand-9.svg" alt="Pixar" loading="lazy"></div>
+            <div class="studio-card"><img src="assets/brand-10.svg" loading="lazy"></div>
         </div>
     </section>
 
@@ -392,11 +422,18 @@
     <script src="script.js"></script>
     <script>
       const saved = JSON.parse(localStorage.getItem('movieUser') || 'null');
-      if (saved && saved.avatar) {
+      if (saved) {
         const navAvatar = document.getElementById('navAvatar');
-        if (navAvatar) navAvatar.src = saved.avatar;
+        const dropdownAvatar = document.getElementById('dropdownAvatar');
+        const dropdownName = document.getElementById('dropdownName');
+        const pic = saved.avatar || localStorage.getItem('userProfilePic');
+        if (pic) {
+          if (navAvatar) navAvatar.src = pic;
+          if (dropdownAvatar) dropdownAvatar.src = pic;
+        }
+        if (saved.name && dropdownName) dropdownName.textContent = saved.name;
+        if (saved.email && dropdownName && !saved.name) dropdownName.textContent = saved.email;
       }
     </script>
 </body>
 </html>
-
