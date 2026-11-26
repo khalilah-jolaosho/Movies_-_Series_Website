@@ -1,6 +1,9 @@
+// login.js
+
 function togglePassword(inputId, eyeIcon) {
   const input = document.getElementById(inputId);
   const icon = eyeIcon.querySelector('i');
+  if (!input || !icon) return;
   if (input.type === "password") {
     input.type = "text";
     icon.className = "fa-solid fa-eye-slash";
@@ -20,7 +23,7 @@ function doLogin() {
     return;
   }
 
-  const savedUser = JSON.parse(localStorage.getItem('movieUser'));
+  const savedUser = JSON.parse(localStorage.getItem('movieUser') || 'null');
 
   if (!savedUser) {
     errorEl.textContent = "No account found. Please sign up first.";
@@ -32,8 +35,12 @@ function doLogin() {
     return;
   }
 
-  document.getElementById('loginUsernameShow').textContent = username;
-  document.getElementById('loginAvatar').src = savedUser.avatar || "images/moana.png";
+  // Save login state
+  localStorage.setItem('isLoggedIn', 'true');
+  errorEl.textContent = "";
+
+  document.getElementById('loginUsernameShow').textContent = "Welcome back, " + username;
+  document.getElementById('loginAvatar').src = savedUser.avatar || "assets/profile-1.svg";
 
   document.getElementById('loginStep1').classList.remove('active');
   document.getElementById('loginStep2').classList.add('active');
@@ -43,3 +50,4 @@ function doLogin() {
 
 function goToHome() {
   window.location.href = "index.html";
+}

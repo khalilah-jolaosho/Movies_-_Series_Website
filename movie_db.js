@@ -192,7 +192,7 @@ const populateMovies = async () => {
         };
     });
 
-    console.log('20 movies successfully populated:', movies);
+    
 
     return movies;
 };
@@ -258,7 +258,6 @@ const populateExtra = async () => {
     url: `https://www.youtube.com/results?search_query=${encodeURIComponent((t.title||t.name) + ' official trailer')}`
   }));
 
-  console.log('Extra loaded:', series.length, kids.length, trending.length);
   document.dispatchEvent(new Event('dataReady'));
 };
 
